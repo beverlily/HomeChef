@@ -30,3 +30,4 @@ class Database
   }
 
 }
+Database::getDb();

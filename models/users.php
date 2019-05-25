@@ -1,20 +1,10 @@
 <?php
-require_once('Database.php');
+//require_once('Database.php');
 
-class user
+class User
 {
-  // private $db;
-  // private $fname;
-  // private $lname;
-  // private $email;
-  // private $password;
-  // private $address;
-  //
-  // public function __construct($db)
-  // {
-  //   $this->db = $db;
-  // }
 
+  // Function to add a new user to the database
   public function addUser($fname, $lname, $email, $address, $password, $db)
   {
     $sql = "INSERT INTO users (first_name, last_name, email, password, address)
@@ -28,7 +18,29 @@ class user
 
     $count = $pst->execute();
     return $count;
-  
+
+  }
+
+  // Function to sign in a registered user
+  public function signIn($email, $password, $db){
+    $sql = "SELECT * FROM users
+    WHERE email = :email";
+    $pst =$db->prepare($sql);
+    $pst->bindParam(':email', $email);
+    $pst->execute();
+    $u= $pst->fetch(PDO::FETCH_OBJ);
+    return $u;
+    }
+
+  //Function to get a single user
+  public function getUser($id, $db){
+    $sql= "SELECT * FROM users
+    WHERE id = :id";
+    $pst = $db->prepare($sql);
+    $pst->bindParam(':id', $id);
+    $pst->execute();
+    $u=$pst->fetch(PDO::FETCH_OBJ);
+    return $u;
   }
 
 
