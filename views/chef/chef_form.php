@@ -11,12 +11,12 @@
 	<h1>Become a Chef</h1>
 	<form method="POST" enctype="multipart/form-data">
 		<div>
-			<label for="bio">Bio</label>
-			<input type="text" name="bio" id="bio" >
+			<label for="chef_bio">Bio</label>
+			<input type="text" name="chef_bio" id="chef_bio" >
 		</div>
 		<div>
-			<label for="image">Image:</label>
-			<input type="file" name="image" id="image">
+			<label for="chef_image">Image:</label>
+			<input type="file" name="chef_image" id="chef_image">
 		</div>
 		<div>
 			<label for="radius">Address radius:</label>
