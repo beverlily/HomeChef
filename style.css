@@ -55,6 +55,7 @@ li{
 #steps{
 	padding: 25px 50px;
 	align-items: center;
+	text-align: center;
 }
 
 .step{
