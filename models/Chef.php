@@ -13,10 +13,10 @@ class Chef {
               $image - image of the chef
               $radius - delivery radius  */
 
-	public function createChef($userId, $bio, $image, $raduis){
+	public function createChef($userId, $bio, $image, $radius){
 		// $time = time();
 
-		$sql = "INSERT INTO chefs (user_id, bio, image, address_radius, created_date)
+		$sql = "INSERT INTO chefs (user_id, bio, image, address_radius)
 						VALUES (:userId, :bio, :image, :address_radius)";
 
 		$pst = $this->db->prepare($sql);
@@ -24,7 +24,7 @@ class Chef {
 		$pst->bindParam(':userId', $userId);
 		$pst->bindParam(':bio', $bio);
 		$pst->bindParam(':image', $image);
-		$pst->bindParam(':radius', $radius);
+		$pst->bindParam(':address_radius', $radius);
 
 		$count = $pst->execute();
 		return $count;

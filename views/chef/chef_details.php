@@ -1,5 +1,5 @@
 <?php
-
+require_once '../../controller/chefController.php';
 ?>
 
 	<main id="main">
