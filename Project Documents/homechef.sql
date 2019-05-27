@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 14, 2019 at 01:38 PM
+-- Generation Time: May 27, 2019 at 03:51 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -22,6 +22,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `chefs` (
   `id` int(11) NOT NULL,
+  `user_id` int(225) NOT NULL,
   `bio` varchar(500) NOT NULL,
   `image` varchar(225) NOT NULL,
   `rating` int(11) NOT NULL DEFAULT '0',
@@ -92,6 +93,14 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `address`, `IsChef`) VALUES
+(1, 'Jenna', 'Bess', 'jennab@test.com', '$2y$10$KapY46OEq1Sp7PHFVQiSceTvAypAugmaU6pslmhdkovFn3dyyCdf6', '30 Roehampton Ave, #3203', 0),
+(2, 'Jenna', 'Greenberg', 'Jennabg16', '$2y$10$7wFTxvWYsDtUnrN/xb5DfOGMRUjd0nRNE1xbsac3pvpUuT/hgFdM2', '30 Roehampton Ave, #3203', 0);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -99,25 +108,32 @@ CREATE TABLE `users` (
 -- Indexes for table `chefs`
 --
 ALTER TABLE `chefs`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `chef_id` (`chef_id`);
 
 --
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `chef_id` (`chef_id`);
 
 --
 -- Indexes for table `products_orders`
 --
 ALTER TABLE `products_orders`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `users`
@@ -157,4 +173,35 @@ ALTER TABLE `products_orders`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `chefs`
+--
+ALTER TABLE `chefs`
+  ADD CONSTRAINT `chefs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`chef_id`) REFERENCES `chefs` (`id`);
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`chef_id`) REFERENCES `chefs` (`id`);
+
+--
+-- Constraints for table `products_orders`
+--
+ALTER TABLE `products_orders`
+  ADD CONSTRAINT `products_orders_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
+  ADD CONSTRAINT `products_orders_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `products_orders_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
