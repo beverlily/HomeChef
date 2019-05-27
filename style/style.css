@@ -13,6 +13,7 @@
  * 10. ANIMATIONS
  * 11. MEDIA QUERIES
  * 12. SKIP TO MAIN
+ * 13. FORMS *
  ***********************************************/
 
 /*1. DEFAULT OVERRIDES*/
@@ -30,6 +31,10 @@ body{
   margin: 0;
   padding: 0;
   color: #4daba4;
+  background-color:#D3F2EF;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 img{
@@ -49,6 +54,10 @@ ul{
 
 li{
   display: inline-block;
+}
+
+#main{
+  margin:10px;
 }
 
 /*STEPS*/
@@ -106,6 +115,8 @@ li{
 	font-size: 3rem;
 	padding: 50px;
 	font-weight: bold;
+  font-family: 'Josefin Sans', sans-serif;
+
 }
 
 
@@ -144,6 +155,14 @@ li{
 .button:hover{
   cursor: pointer;
 }
+.banner-pages{
+  background-color:#449C93;
+  color:#E5D9CD;
+  padding:10px;
+  text-align: center;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
 
 /*4. HEADER*/
 
@@ -177,6 +196,18 @@ li{
 #header-nav a{
   margin-left: 20px;
   color: #383838;
+}
+
+
+
+.alt{
+  color:white !important;
+  font-family: 'Josefin Sans', sans-serif;
+  text-transform: uppercase;
+}
+
+.alt a:hover{
+  color:#E1584B;
 }
 
 #site-logo{
@@ -232,4 +263,50 @@ li{
 #copyright{
 	text-align: center;
 	color: white;
+}
+
+/*FORMS*/
+form{
+  background-color:white;
+  width:75%;
+  display:block;
+  margin:0 auto;
+  padding:30px 20px 20px 20px;
+
+  -webkit-box-shadow: 4px 7px 5px 0px rgba(71,71,71,0.64);
+-moz-box-shadow: 4px 7px 5px 0px rgba(71,71,71,0.64);
+box-shadow: 4px 7px 5px 0px rgba(71,71,71,0.64);
+}
+
+label{
+  padding: .5em 1em .5em 1em;
+  flex: 1;
+}
+
+input{
+  padding:5px;
+  background-color:#D3F2EF;
+  border: 0.5px solid #449C93;
+  flex: 3;
+}
+.form-row{
+  display: flex;
+    justify-content: flex-end;
+    padding: .5em;
+}
+
+form button{
+  background-color:#253546;
+  color:white;
+  text-align: center;
+  padding: 10px;
+    display: block;
+    transition: all .5s;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 20px auto;
+}
+
+form button:hover{
+  background-color:#E1584B;
 }
