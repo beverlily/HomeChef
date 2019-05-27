@@ -53,7 +53,7 @@ li{
 
 /*STEPS*/
 #steps{
-	padding: 25px 50px;
+	padding: 0px 50px;
 	align-items: center;
 	text-align: center;
 }
@@ -76,6 +76,7 @@ li{
 	color: #eae2d8;
 	font-weight: bold;
 	font-size: 1.25rem;
+	padding: 15px;
 }
 
 .red-heading{
@@ -86,7 +87,6 @@ li{
 
 #about .button-container{
 	justify-content: center;
-	padding: 20px;
 }
 
 #about .button{
@@ -109,7 +109,7 @@ li{
 }
 
 #home-banner .button{
-	font-size: 2rem;
+	font-size: 1.5rem;
 	color: #eae2d8;
 	background: #ea6f5f;
 	margin: 0;
