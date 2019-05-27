@@ -104,10 +104,17 @@ li{
 
 #home-banner-text{
 	font-size: 3rem;
-	padding: 50px;
+	padding: 25px 50px;
 	font-weight: bold;
 }
 
+#home-banner .button{
+	font-size: 2rem;
+	color: #eae2d8;
+	background: #ea6f5f;
+	margin: 0;
+	margin-top: 50px;
+}
 
 .banner-text{
 	margin: 0;
