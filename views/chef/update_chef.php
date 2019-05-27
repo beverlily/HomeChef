@@ -1,14 +1,8 @@
-<?php ?>
+<?php 
+?>
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Chef-form</title>
-</head>
-<body>
-	<h1>Become a Chef</h1>
+<main id="main">
+	<h1>Update the Chef profile</h1>
 	<form method="POST" enctype="multipart/form-data">
 		<div>
 			<label for="chef_bio">Bio</label>
@@ -23,8 +17,7 @@
 			<input type="text" name="radius" id="radius">
 		</div>
 		<div>
-			<input type="submit" value="Become a Chef!">
+			<input type="submit" value="Update Chef profile!" name="update">
 		</div>
 	</form>
-</body>
-</html>
+</main>

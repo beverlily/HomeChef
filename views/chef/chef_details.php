@@ -2,14 +2,7 @@
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Chef Details</title>
-</head>
-<body>
-	<main>
+	<main id="main">
 		<div>
 			<h1>Name | Raiting</h1>
 			<p>Address:</p>
@@ -25,5 +18,3 @@
 			<a href="#" name="create">Create a new product!</a>
 		</div>
 	</main>
-</body>
-</html>
