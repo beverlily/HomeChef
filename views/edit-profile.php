@@ -1,9 +1,10 @@
 <?php
-require_once '../../controller/userController.php';
-include '../../views/partials/header.php';
-include '../../views/partials/menu.php';
+include 'views/partials/header.php';
+include 'views/partials/menu.php';
+
 $userid = $_SESSION['USERID'];
 $this_user=$user->getUser($userid,$db);
+
 
  ?>
 
@@ -39,4 +40,4 @@ $this_user=$user->getUser($userid,$db);
    </form>
  </main>
 
-  <?php  include '../../views/partials/footer.php'; ?>
+  <?php  include 'views/partials/footer.php'; ?>

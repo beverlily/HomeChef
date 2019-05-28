@@ -1,4 +1,14 @@
 <?php
+session_start();
+
+define( 'ROOT', '/HomeChef' );
+
+require_once 'models/database.php';
+require_once 'models/users.php';
+require_once 'controller/userController.php';
+
+$_SERVER['REQUEST_URI'] = str_replace( ROOT, '', $_SERVER['REQUEST_URI'] );
+
 //http://localhost:8888/about.php?var=1&var2=2
 $vars = array_values(array_filter(explode('/', $_SERVER['REQUEST_URI'])));
 if(count($vars)%2==1)

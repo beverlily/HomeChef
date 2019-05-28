@@ -3,14 +3,14 @@
    <div class="page-wrapper">
   <div id="header-content" class="flex-container">
     <div id="site-logo">
-       <a href="../../index.html"><img src="../../images/logo.png" alt="Home Chef Logo" /></a>
+       <a href="<?= ROOT ?>"><img src="images/logo.png" alt="Home Chef Logo" /></a>
     </div>
       <nav id="header-nav">
        <h2 class="hidden">Main Navigation</h2>
        <ul>
-        <li><a class= "alt" href="">Profile</a></li>
+        <li><a class= "alt" href="user_profile">Profile</a></li>
         <li><a class= "alt" href="">Browse</a></li>
-        <li><a class= "alt" href="">Logout</a></li>
+        <li><a class= "alt" href="destroy_session">Logout</a></li>
        </ul>
       </nav>
   </div>

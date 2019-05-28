@@ -1,7 +1,6 @@
 <?php
-require_once '../../controller/userController.php';
-include '../../views/partials/header.php';
-include '../../views/partials/menu.php';
+include 'views/partials/header.php';
+include 'views/partials/menu.php';
 $userid = $_SESSION['USERID'];
 $this_user=$user->getUser($userid,$db);
  ?>
@@ -11,14 +10,18 @@ $this_user=$user->getUser($userid,$db);
      <h2> Profile Page </h2>
    </div>
    <div id="user-profile">
-    <ul>
+     <h3> <?=$this_user->first_name?>'s Profile </h3>
+           <ul>
       <li> First Name: <?=$this_user->first_name?> </li>
       <li> Last Name: <?=$this_user->last_name?></li>
       <li> Email Address: <?=$this_user->email?></li>
       <li> Address: <?=$this_user->address?></li>
     </ul>
-    <button type="submit" name="edit"> <a href="edit-profile.php">Edit Profile </a></button>
+    <div class="center">
+      <button type="submit" name="edit"> <a href="edit-profile">Edit Profile </a></button>
+      <button type="submit" name="edit"> <a href="chef_create">Become A Chef </a></button>
+    </div>
 
   </div>
  </main>
- <?php  include '../../views/partials/footer.php'; ?>
+ <?php  include 'views/partials/footer.php'; ?>

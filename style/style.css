@@ -172,6 +172,12 @@ li{
   text-transform: uppercase;
 }
 
+.center{
+  text-align: center;
+  display:block;
+  margin: 0 auto;
+}
+
 /*4. HEADER*/
 
 #header, #footer{
@@ -323,6 +329,10 @@ button a{
 }
 
 /*USER PROFILE PAGE*/
+#user-profile h3{
+  text-transform: uppercase;
+  text-align: center;
+}
 #user-profile{
   background-color:white;
   width:75%;
@@ -336,6 +346,14 @@ button a{
 
 #user-profile li{
   display:block;
-  line-height: 1.5;
-  text-align: center;
+  line-height: 2;
+  border-bottom:2px solid;
+  background-color:#EBF9F7;
+  padding:1em;
+  width:60%;
+  margin:0 auto;
+}
+
+#user-profile button{
+  display:inline-block;
 }
