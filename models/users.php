@@ -43,6 +43,27 @@ class User
     return $u;
   }
 
+  public function editUser($id, $fname, $lname, $email, $address, $password, $db){
+    $sql = "UPDATE users
+    set first_name = :first_name,
+    last_name = :last_name,
+    email = :email,
+    address = :address,
+    password = :password
+    WHERE id=:id";
+    $pst =$db->prepare($sql);
+    $pst->bindParam(':id', $id);
+    $pst->bindParam(':first_name', $fname);
+    $pst->bindParam(':last_name', $lname);
+    $pst->bindParam(':email', $email);
+    $pst->bindParam(':password', $password);
+    $pst->bindParam(':address', $address);
+
+    $count = $pst->execute();
+    return $count;
+
+  }
+
 
 }
 

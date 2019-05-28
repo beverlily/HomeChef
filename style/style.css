@@ -14,6 +14,7 @@
  * 11. MEDIA QUERIES
  * 12. SKIP TO MAIN
  * 13. FORMS *
+ * 14. USER PROFILE PAGE*
  ***********************************************/
 
 /*1. DEFAULT OVERRIDES*/
@@ -302,7 +303,7 @@ input{
     padding: .5em;
 }
 
-form button{
+form button, #user-profile button{
   background-color:#253546;
   color:white;
   text-align: center;
@@ -314,6 +315,24 @@ form button{
     margin: 20px auto;
 }
 
-form button:hover{
+form button:hover, #user-profile button:hover{
   background-color:#E1584B;
+}
+
+/*USER PROFILE PAGE*/
+#user-profile{
+  background-color:white;
+  width:75%;
+  display:block;
+  margin:30px auto;
+  padding:30px 20px 20px 20px;
+  -webkit-box-shadow: 4px 7px 5px 0px rgba(71,71,71,0.64);
+  -moz-box-shadow: 4px 7px 5px 0px rgba(71,71,71,0.64);
+  box-shadow: 4px 7px 5px 0px rgba(71,71,71,0.64);
+}
+
+#user-profile li{
+  display:block;
+  line-height: 1.5;
+  text-align: center;
 }

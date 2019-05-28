@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../../models/database.php';
 require_once '../../models/users.php';
 
@@ -47,7 +48,26 @@ if(isset($_POST['sign_in'])){
   }
 }
 
-//Logic for getting a single users information
+//Logic for editng a users PROFILE
+
+if(isset($_POST['edit_user'])){
+  $fname = $_POST['first_name'];
+  $lname = $_POST['last_name'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $password = password_hash($password, PASSWORD_DEFAULT);
+  $address = $_POST['address'];
+  $id = $_SESSION['USERID'];
+
+  $c = $user->editUser($id, $fname, $lname, $email, $address, $password, $db);
+    if($c){
+    echo "User created";
+      }else{
+      echo "Error adding user";
+    }
+  }
+
+
 
 
 
