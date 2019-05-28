@@ -16,8 +16,9 @@ class User
     $pst->bindParam(':password', $password);
     $pst->bindParam(':address', $address);
 
-    $count = $pst->execute();
-    return $count;
+    $pst->execute();
+    $last_id = $pst->lastInsertId();
+    return $last_id;
 
   }
 

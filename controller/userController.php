@@ -25,7 +25,8 @@ if(isset($_POST['add_user'])){
       echo "please enter a valid email address";
         }else{ $c = $user->addUser($fname, $lname, $email, $address, $password, $db);
           if($c){
-          echo "User created";
+            $_SESSION['USERID']= $c->id;
+            echo $_SESSION['USERID'];
             }else{
             echo "Error adding user";
           }
@@ -54,8 +55,13 @@ if(isset($_POST['edit_user'])){
   $fname = $_POST['first_name'];
   $lname = $_POST['last_name'];
   $email = $_POST['email'];
-  $password = $_POST['password'];
-  $password = password_hash($password, PASSWORD_DEFAULT);
+  if(empty($_POST['password'])){
+    $this_user=$user->getUser($_SESSION['USERID'],$db);
+    $password = $this_user->password;
+  }else{
+    $password = $_POST['password'];
+    $password = password_hash($password, PASSWORD_DEFAULT);
+  }
   $address = $_POST['address'];
   $id = $_SESSION['USERID'];
 

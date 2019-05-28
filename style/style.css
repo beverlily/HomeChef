@@ -104,7 +104,7 @@ li{
 	background-color: #344458;
 }
 #home-banner{
-	background-image: url("images/banner5.jpg");
+	background-image: url("../images/banner5.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -317,6 +317,9 @@ form button, #user-profile button{
 
 form button:hover, #user-profile button:hover{
   background-color:#E1584B;
+}
+button a{
+  color:white;
 }
 
 /*USER PROFILE PAGE*/

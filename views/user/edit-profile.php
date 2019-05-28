@@ -28,7 +28,7 @@ $this_user=$user->getUser($userid,$db);
    </div>
    <div class="form-row">
      <label for="password"> Password: </label>
-     <input type="password" name="password" placeholder="Password" value="<?=$this_user->password?>"><br />
+     <input type="password" name="password" placeholder="Password"><br />
    </div>
 
    <div class="form-row">
