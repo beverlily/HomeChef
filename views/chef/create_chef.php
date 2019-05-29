@@ -1,26 +1,32 @@
 <?php 
 require_once '../../controller/chefController.php';
+include '../../views/partials/header.php';
+include '../../views/partials/menu.php';
 ?>
 
 
 
 <main id="main">
-	<h1>Become a Chef</h1>
+	<div class="banner-pages">
+		<h2>Become a Chef</h2>
+	</div>
 	<form method="POST" enctype="multipart/form-data">
-		<div>
-			<label for="chef_bio">Bio</label>
-			<input type="text" name="chef_bio" id="chef_bio" >
+		<div class="form-row">
+			<label for="chef_bio">Bio:</label>
+			<textarea type="text" name="chef_bio" id="chef_bio" ></textarea>
 		</div>
-		<div>
+		<div class="form-row">
 			<label for="chef_image">Image:</label>
 			<input type="file" name="chef_image" id="chef_image">
 		</div>
-		<div>
+		<div class="form-row">
 			<label for="radius">Address radius:</label>
 			<input type="text" name="radius" id="radius">
 		</div>
 		<div>
-			<input type="submit" value="Become a Chef!" name="create">
+			<button type="submit"  name="create">Become a Chef!</button>
 		</div>
+		<div class="errMsg"><?php echo $errMSG; ?></div>
 	</form>
 </main>
+<?php  include '../../views/partials/footer.php'; ?>

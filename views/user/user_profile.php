@@ -2,7 +2,7 @@
 require_once '../../controller/userController.php';
 include '../../views/partials/header.php';
 include '../../views/partials/menu.php';
-$userid = $_SESSION['USERID'];
+$userid = $_SESSION['USERID'] = 3;
 $this_user=$user->getUser($userid,$db);
  ?>
 

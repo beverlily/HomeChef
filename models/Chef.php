@@ -71,18 +71,34 @@ class Chef {
 
   	/*Method that gets the chef info with the specific id.
 		 The method is used for update functionality to
-		 retrieve data that needs to be changed and to desplay details */
+		 retrieve data that needs to be changed */
 
  		public function getChef($id) {
-      $sql = "SELECT * FROM chefs WHERE id = :chefId";
+      $sql = "SELECT first_name, last_name, address, bio, radius 
+			FROM users
+			INNER JOIN chefs
+			ON users.id = chefs.user_id 
+			WHERE chefs.id = :chefId";
 
       $pst = $this->db->prepare($sql);
       $pst->bindParam(':chefId', $id);
       $pst->execute();
 
-      $request = $pst->fetch();
+      $chef = $pst->fetch();
 
-      return $request;
+      return $chef;
+		 }
+		 
+		 public function getChefDetails() {  //join with users table 
+      $sql = "SELECT first_name, last_name, address, bio, radius FROM users
+							INNER JOIN chefs
+							ON users.id = chefs.user_id";
+
+      $pst = $this->db->prepare($sql);
+      $pst->execute();
+			
+			$chefdetails = $pst->fetchAll(PDO::FETCH_OBJ);
+			return $chefdetails;
  	  }
 
 

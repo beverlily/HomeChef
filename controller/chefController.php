@@ -9,7 +9,7 @@ $chef = new Chef(Database::getDb());
 /*  When the form on the chef page is successfully submitted the entered data
       inserts into the chefs table and "Request has been added." message pops up,
       if something goes wrong "Problem adding the request." message is displayed */
-
+    $errMSG="";
       if(isset($_POST['create'])){
         $bio = filter_var($_POST['chef_bio'], FILTER_SANITIZE_STRING);   
         $imgFile = $_FILES['chef_image']['name'];
@@ -67,7 +67,6 @@ $chef = new Chef(Database::getDb());
 
 if(isset($_POST['update'])) {
   echo $_POST['id'];
-  // $userID = $_SESSION['userid'];
   $bio = filter_var($_POST['bio'], FILTER_SANITIZE_STRING);
   $imgFile = $_FILES['chef_image']['name'];
   $tmp_dir = $_FILES['chef_image']['tmp_name'];
@@ -76,7 +75,7 @@ if(isset($_POST['update'])) {
 
   if($imgFile)
   {
-   $upload_dir = 'chef_images/'; // upload directory 
+   $upload_dir = '../../chef_images/'; // upload directory 
    $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // get image extension
    $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
    $image = rand(1000,1000000).".".$imgExt;
@@ -117,6 +116,7 @@ if(isset($_POST['update'])) {
 
   header("Location: user_profile.php?id=$userId");
 }
+
 
 
 
