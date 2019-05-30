@@ -39,7 +39,7 @@ class Chef {
 
 	public function editChef($chefId, $bio, $image, $radius){
 
-		$sql = "UPDATE chefs SET bio = :bio, image = :image, radius = :radius
+		$sql = "UPDATE chefs SET bio = :bio, image = :image, address_radius = :radius
 						WHERE id = :chefId";
 
 		$pst = $this->db->prepare($sql);
@@ -74,11 +74,11 @@ class Chef {
 		 retrieve data that needs to be changed */
 
  		public function getChef($id) {
-      $sql = "SELECT first_name, last_name, address, bio, radius 
+      $sql = "SELECT users.id, first_name, last_name, address, chefs.id, bio, image, address_radius 
 			FROM users
 			INNER JOIN chefs
 			ON users.id = chefs.user_id 
-			WHERE chefs.id = :chefId";
+			WHERE users.id = :chefId";
 
       $pst = $this->db->prepare($sql);
       $pst->bindParam(':chefId', $id);
@@ -90,7 +90,7 @@ class Chef {
 		 }
 		 
 		 public function getChefDetails() {  //join with users table 
-      $sql = "SELECT first_name, last_name, address, bio, radius FROM users
+      $sql = "SELECT first_name, last_name, address, bio, address_radius FROM users
 							INNER JOIN chefs
 							ON users.id = chefs.user_id";
 

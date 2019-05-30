@@ -1,7 +1,6 @@
 <?php 
-require_once '../../controller/chefController.php';
-include '../../views/partials/header.php';
-include '../../views/partials/menu.php';
+include 'views/partials/header.php';
+include 'views/partials/menu.php';
 ?>
 
 
@@ -26,7 +25,6 @@ include '../../views/partials/menu.php';
 		<div>
 			<button type="submit"  name="create">Become a Chef!</button>
 		</div>
-		<div class="errMsg"><?php echo $errMSG; ?></div>
 	</form>
 </main>
-<?php  include '../../views/partials/footer.php'; ?>
+<?php  include 'views/partials/footer.php'; ?>

@@ -14,6 +14,7 @@
  * 11. MEDIA QUERIES
  * 12. SKIP TO MAIN
  * 13. FORMS *
+ * 14. USER PROFILE PAGE*
  ***********************************************/
 
 /*1. DEFAULT OVERRIDES*/
@@ -103,7 +104,7 @@ li{
 	background-color: #344458;
 }
 #home-banner{
-	background-image: url("images/banner5.jpg");
+	background-image: url("../images/banner5.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -170,9 +171,11 @@ li{
   margin-bottom: 15px;
   text-transform: uppercase;
 }
-.errMsg{
-  color: #FF0000;
+
+.center{
   text-align: center;
+  display:block;
+  margin: 0 auto;
 }
 
 /*4. HEADER*/
@@ -306,7 +309,7 @@ input, textarea{
     padding: .5em;
 }
 
-form button{
+form button, #user-profile button, #chef-pages button{
   background-color:#253546;
   color:white;
   text-align: center;
@@ -318,6 +321,70 @@ form button{
     margin: 20px auto;
 }
 
-form button:hover{
+form button:hover, #user-profile button:hover, #chef-pages button:hover{
   background-color:#E1584B;
+}
+button a{
+  color:white;
+}
+
+/*USER PROFILE PAGE*/
+#user-profile h3{
+  text-transform: uppercase;
+  text-align: center;
+}
+#user-profile{
+  background-color:white;
+  width:75%;
+  display:block;
+  margin:30px auto;
+  padding:30px 20px 20px 20px;
+  -webkit-box-shadow: 4px 7px 5px 0px rgba(71,71,71,0.64);
+  -moz-box-shadow: 4px 7px 5px 0px rgba(71,71,71,0.64);
+  box-shadow: 4px 7px 5px 0px rgba(71,71,71,0.64);
+}
+
+#user-profile li{
+  display:block;
+  line-height: 2;
+  border-bottom:2px solid;
+  background-color:#EBF9F7;
+  padding:1em;
+  width:60%;
+  margin:0 auto;
+}
+
+#user-profile button{
+  display:inline-block;
+}
+
+/*CHEF PROFILE PAGE*/
+#chef-pages{
+  width: 1100px;
+  margin: 0 auto;
+  padding:10px;
+  background-color: #fff;/*#E5D9CD;*/
+  color:#449C93;
+  text-align: center;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+  -webkit-box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+  -moz-box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+.chef-image{
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+#chef-pages p{
+  margin: 10px;
+}
+.chef-link {
+  color: #E1584B;
+  font-style: italic;
+  font-weight: bold;
+}
+.chef-link:hover{
+  color: #344458;
 }

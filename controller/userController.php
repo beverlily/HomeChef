@@ -1,7 +1,4 @@
 <?php
-require_once '../../models/database.php';
-require_once '../../models/users.php';
-
 
 $db = Database::getDb();
 $user = new User;
@@ -22,9 +19,10 @@ if(isset($_POST['add_user'])){
     echo "All fields are required";
   }elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
       echo "please enter a valid email address";
-        }else{ $c = $user->addUser($fname, $lname, $email, $address, $password, $db);
+        }else{$c = $user->addUser($fname, $lname, $email, $address, $password, $db);
           if($c){
-          echo "User created";
+            $_SESSION['USERID']= $c;
+            header('Location:user_profile');
             }else{
             echo "Error adding user";
           }
@@ -41,13 +39,37 @@ if(isset($_POST['sign_in'])){
   $c=$user->signIn($email, $password, $db);
   if($c && password_verify($password, $c->password)){
     $_SESSION['USERID']= $c->id;
-    header('Location:user_profile.php');
+    header('Location:user_profile');
   }else{
     echo "problem logging in";
   }
 }
 
-//Logic for getting a single users information
+//Logic for editng a users PROFILE
+
+if(isset($_POST['edit_user'])){
+  $fname = $_POST['first_name'];
+  $lname = $_POST['last_name'];
+  $email = $_POST['email'];
+  if(empty($_POST['password'])){
+    $this_user=$user->getUser($_SESSION['USERID'],$db);
+    $password = $this_user->password;
+  }else{
+    $password = $_POST['password'];
+    $password = password_hash($password, PASSWORD_DEFAULT);
+  }
+  $address = $_POST['address'];
+  $id = $_SESSION['USERID'];
+
+  $c = $user->editUser($id, $fname, $lname, $email, $address, $password, $db);
+    if($c){
+    header('Location:user_profile');
+      }else{
+      echo "Error adding user";
+    }
+  }
+
+
 
 
 

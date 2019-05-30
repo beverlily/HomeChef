@@ -1,16 +1,15 @@
 <?php 
-require_once '../../controller/chefController.php';
-require_once '../../models/Chef.php';
-include '../../views/partials/header.php';
-include '../../views/partials/menu.php';
-$chef = new Chef(Database::getDb());
+include 'views/partials/header.php';
+include 'views/partials/menu.php';
 
+// $chef = new Chef(Database::getDb());
 if(isset($_POST['id'])) {
 	$chefEdit = $chef->getChef($_POST['id']);
 }
 var_dump($chef);
+// echo 'Hi'. $_SESSION['USERID'];
 ?>
-
+<!--Need to  Fix update functionality -->
 <main id="main">
 	<div class="banner-pages">
 		<h1>Update the Chef profile</h1>
@@ -34,4 +33,4 @@ var_dump($chef);
 		</div>
 	</form>
 </main>
-<?php  include '../../views/partials/footer.php'; ?>
+<?php  include 'views/partials/footer.php'; ?>
