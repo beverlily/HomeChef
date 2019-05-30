@@ -7,6 +7,9 @@ $chefDetails = $chef->getChef($id);
 ?>
 
 	<main id="main">
+		<div class="banner-pages">
+			<h2> Chef Profile </h2>
+		</div>
 	<div id="chef-pages">
 		<div>
 			<img class='chef-image' src='chef_images/<?php echo  $chefDetails['image'] ?>' alt='Picture of a Chef' />

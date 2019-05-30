@@ -1,4 +1,4 @@
-<?php 
+<?php
 class Chef {
   private $db;
   /* Constructor function for Request
@@ -9,7 +9,7 @@ class Chef {
 
   /*Method that allows to create a new chef
 	Parameters: $userId - id of a user who wants to become a chef
-							$bio - short bio 
+							$bio - short bio
               $image - image of the chef
               $radius - delivery radius  */
 
@@ -30,11 +30,23 @@ class Chef {
 		return $count;
 
   }
-  
+
+  /*Method to change isChef column in user table to 1 instead of 0*/
+  public function isChef($id){
+  $sql = "UPDATE users
+  SET IsChef = 1
+  WHERE id=:id";
+  $pst = $this->db->prepare($sql);
+  $pst->bindParam(':id', $id);
+  $count = $pst->execute();
+  return $count;
+
+}
+
   /*Method that allows to edit the chef info
 	Parameters: $chefId - id of the chef that needs to be changed
 							$bio - bio of the chef
-              $image - image of the chef 
+              $image - image of the chef
               $radius - delivery radius */
 
 	public function editChef($chefId, $bio, $image, $radius){
@@ -59,9 +71,9 @@ class Chef {
 
 	public function deleteChef($chefId){
 
-		$sql = "DELETE FROM chefs 
+		$sql = "DELETE FROM chefs
             WHERE id = :chefId";
-    
+
     $pst = $this->db->prepare($sql);
     $pst->bindParam(':chefId', $chefId);
 
@@ -74,10 +86,10 @@ class Chef {
 		 retrieve data that needs to be changed */
 
  		public function getChef($id) {
-      $sql = "SELECT users.id, first_name, last_name, address, chefs.id, bio, image, address_radius 
+      $sql = "SELECT users.id, first_name, last_name, address, chefs.id, bio, image, address_radius
 			FROM users
 			INNER JOIN chefs
-			ON users.id = chefs.user_id 
+			ON users.id = chefs.user_id
 			WHERE users.id = :chefId";
 
       $pst = $this->db->prepare($sql);
@@ -88,15 +100,15 @@ class Chef {
 
       return $chef;
 		 }
-		 
-		 public function getChefDetails() {  //join with users table 
+
+		 public function getChefDetails() {  //join with users table
       $sql = "SELECT first_name, last_name, address, bio, address_radius FROM users
 							INNER JOIN chefs
 							ON users.id = chefs.user_id";
 
       $pst = $this->db->prepare($sql);
       $pst->execute();
-			
+
 			$chefdetails = $pst->fetchAll(PDO::FETCH_OBJ);
 			return $chefdetails;
  	  }

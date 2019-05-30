@@ -1,4 +1,4 @@
-<?php 
+<?php
 // session_start();
 //  $_SESSION['userid'];
 // require_once '../../models/database.php';
@@ -9,9 +9,9 @@ $chef = new Chef(Database::getDb());
 /*  When the form on the chef page is successfully submitted the entered data
       inserts into the chefs table and "Request has been added." message pops up,
       if something goes wrong "Problem adding the request." message is displayed */
-     
+
       if(isset($_POST['create'])){
-        $bio = filter_var($_POST['chef_bio'], FILTER_SANITIZE_STRING);   
+        $bio = filter_var($_POST['chef_bio'], FILTER_SANITIZE_STRING);
         $imgFile = $_FILES['chef_image']['name'];
         $tmp_dir = $_FILES['chef_image']['tmp_name'];
         $imgSize = $_FILES['chef_image']['size'];
@@ -28,17 +28,17 @@ $chef = new Chef(Database::getDb());
          else
          {
           $upload_dir = 'chef_images/'; // upload directory
-        
+
           $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // get image extension
-         
+
           // valid image extensions
           $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
-         
+
           // rename uploading image
           $image = rand(1000,1000000).".".$imgExt;
-           
+
           // allow valid image file formats
-          if(in_array($imgExt, $valid_extensions)){   
+          if(in_array($imgExt, $valid_extensions)){
            // Check file size '5MB'
            if($imgSize < 5000000)    {
             move_uploaded_file($tmp_dir,$upload_dir.$image);
@@ -48,12 +48,13 @@ $chef = new Chef(Database::getDb());
            }
           }
           else{
-            echo $errMSG = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";  
+            echo $errMSG = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
           }
          }
          if(!isset($errMSG))
         {
-          
+
+          $chef->isChef($_SESSION['USERID']);
           $count = $chef->createChef($_SESSION['USERID'], $bio, $image, $radius);
 
           if($count) {
@@ -63,8 +64,8 @@ $chef = new Chef(Database::getDb());
           }
         }
       }
-     
-  
+
+
 /* When edit form is successfully submitted, updated data is inserted into the chefs table */
 
 if(isset($_POST['update'])) {
@@ -74,16 +75,16 @@ if(isset($_POST['update'])) {
   $tmp_dir = $_FILES['chef_image']['tmp_name'];
   $imgSize = $_FILES['chef_image']['size'];
   $radius = $_POST['radius'];
-  
+
 
   if($imgFile)
   {
-   $upload_dir = 'chef_images/'; // upload directory 
+   $upload_dir = 'chef_images/'; // upload directory
    $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // get image extension
    $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
    $image = rand(1000,1000000).".".$imgExt;
    if(in_array($imgExt, $valid_extensions))
-   {   
+   {
     if($imgSize < 5000000)
     {
      unlink($upload_dir.$edit_row['image']);
@@ -96,8 +97,8 @@ if(isset($_POST['update'])) {
    }
    else
    {
-     echo $errMSG = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";  
-   } 
+     echo $errMSG = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+   }
   }
 
   if(!isset($errMSG))
