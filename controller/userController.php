@@ -36,10 +36,16 @@ if(isset($_POST['sign_in'])){
   $password = $_POST['password'];
 
 //Connecting to database and confirming user input
+//Then checking if they are a chef or not to see which profile page to take them too
   $c=$user->signIn($email, $password, $db);
   if($c && password_verify($password, $c->password)){
     $_SESSION['USERID']= $c->id;
-    header('Location:user_profile');
+    $this_user=$user->getUser($_SESSION['USERID'],$db);
+      if($this_user->IsChef == 1){
+        header('Location:chef_details');
+      }else{
+        header('Location:user_profile');
+      }
   }else{
     echo "problem logging in";
   }

@@ -6,6 +6,9 @@ $chefDetails = $chef->getChef($id);
 
 ?>
 	<main id="main">
+		<div class="banner-pages">
+			<h2> Chef Profile </h2>
+		</div>
 	<div id="chef-pages">
 		<div>
 			<img class='chef-image' src='chef_images/<?php echo  $chefDetails['image'] ?>' alt='Picture of a Chef' />
@@ -16,7 +19,7 @@ $chefDetails = $chef->getChef($id);
 			<p>Delivery Radius: <?php echo $chefDetails['address_radius'] ?> km</p>
 		</div>
 		<div>
-			<a type="submit" href="chef_update" name="update" class="chef-link">Edit Profile</a><span> | </span><a type="submit" href="chef_delete" name="delete" class="chef-link">Delete Profile</a>
+			<a type="submit" href="chef_update" name="update" class="chef-link">Edit Chef Profile</a><span> | </span><a type="submit" href="chef_delete" name="delete" class="chef-link">Delete Chef Profile</a>
 		</div>
 		<div>
 			<!--Need to Add styling here to display products -->
