@@ -8,13 +8,12 @@ class Chef {
   }
 
   /*Method that allows to create a new chef
-	Parameters: $userId - id of a user who wants to become a chef
+	Parameters: $userId - id of a user who wants to become a chef (session id)
 							$bio - short bio 
               $image - image of the chef
               $radius - delivery radius  */
 
 	public function createChef($userId, $bio, $image, $radius){
-		// $time = time();
 
 		$sql = "INSERT INTO chefs (user_id, bio, image, address_radius)
 						VALUES (:userId, :bio, :image, :address_radius)";
@@ -27,6 +26,13 @@ class Chef {
 		$pst->bindParam(':address_radius', $radius);
 
 		$count = $pst->execute();
+
+		// query that sets value = 1 in IsChef column of users table - means that users have chef profiles  
+		$sqlUser = "UPDATE users SET IsChef = 1 
+								 WHERE id=:userId";
+		$pst = $this->db->prepare($sqlUser);
+		$pst->bindParam(':userId', $userId);
+		$pst->execute();
 		return $count;
 
   }
@@ -37,17 +43,17 @@ class Chef {
               $image - image of the chef 
               $radius - delivery radius */
 
-	public function editChef($chefId, $bio, $image, $radius){
+	public function editChef($userId, $bio, $image, $radius){
 
 		$sql = "UPDATE chefs SET bio = :bio, image = :image, address_radius = :radius
-						WHERE id = :chefId";
+						WHERE user_id = :id";
 
 		$pst = $this->db->prepare($sql);
 
 		$pst->bindParam(':bio', $bio);
     $pst->bindParam(':image', $image);
     $pst->bindParam(':radius', $radius);
-		$pst->bindParam(':chefId', $chefId);
+		$pst->bindParam(':id', $userId);
 
 		$count = $pst->execute();
 		return $count;
@@ -57,16 +63,21 @@ class Chef {
   /*Method that allows to delete the chef profile  - means that the chef profile is deleted
 	Parameters: $chefId - id of the chef that needs to be changed */
 
-	public function deleteChef($chefId){
+	public function deleteChef($id){
 
 		$sql = "DELETE FROM chefs 
-            WHERE id = :chefId";
+            WHERE user_id = :userId";
     
     $pst = $this->db->prepare($sql);
-    $pst->bindParam(':chefId', $chefId);
-
-    $count = $pst->execute([':chefId' => $chefId]);
-    return $count;
+    $pst->bindParam(':userId', $id);
+    $count = $pst->execute();
+		
+		$sqlUser = "UPDATE users SET IsChef = 0 
+								 WHERE id=:userId";
+		$pst = $this->db->prepare($sqlUser);
+		$pst->bindParam(':userId', $id);
+		$pst->execute();
+		return $count;
   }
 
   	/*Method that gets the chef info with the specific id.

@@ -2,9 +2,6 @@
 include 'views/partials/header.php';
 include 'views/partials/menu.php';
 ?>
-
-
-
 <main id="main">
 	<div class="banner-pages">
 		<h2>Become a Chef</h2>

@@ -3,9 +3,8 @@ include 'views/partials/header.php';
 include 'views/partials/menu.php';
 $id = $_SESSION['USERID'];
 $chefDetails = $chef->getChef($id);
-//var_dump ($id);
-?>
 
+?>
 	<main id="main">
 	<div id="chef-pages">
 		<div>
@@ -17,7 +16,7 @@ $chefDetails = $chef->getChef($id);
 			<p>Delivery Radius: <?php echo $chefDetails['address_radius'] ?> km</p>
 		</div>
 		<div>
-			<a type="submit" href="chef_update" name="update" class="chef-link">Edit Profile</a>
+			<a type="submit" href="chef_update" name="update" class="chef-link">Edit Profile</a><span> | </span><a type="submit" href="chef_delete" name="delete" class="chef-link">Delete Profile</a>
 		</div>
 		<div>
 			<!--Need to Add styling here to display products -->

@@ -39,7 +39,7 @@ $chef = new Chef(Database::getDb());
            
           // allow valid image file formats
           if(in_array($imgExt, $valid_extensions)){   
-           // Check file size '5MB'
+           // check file size '5MB'
            if($imgSize < 5000000)    {
             move_uploaded_file($tmp_dir,$upload_dir.$image);
            }
@@ -57,25 +57,26 @@ $chef = new Chef(Database::getDb());
           $count = $chef->createChef($_SESSION['USERID'], $bio, $image, $radius);
 
           if($count) {
-              echo "Chef profile has been created.";
+              // echo "Chef profile has been created.";
+              header ('Location: chef_details');
           } else {
               echo "Problem creating chef profile.";
           }
-        }
+        } 
       }
      
   
 /* When edit form is successfully submitted, updated data is inserted into the chefs table */
 
+
 if(isset($_POST['update'])) {
-  echo $_POST['id'];
-  $bio = filter_var($_POST['bio'], FILTER_SANITIZE_STRING);
+  $chefEdit = $chef->getChef($_SESSION['USERID']);
+  $bio = filter_var($_POST['chef_bio'], FILTER_SANITIZE_STRING);
   $imgFile = $_FILES['chef_image']['name'];
   $tmp_dir = $_FILES['chef_image']['tmp_name'];
   $imgSize = $_FILES['chef_image']['size'];
   $radius = $_POST['radius'];
-  
-
+   
   if($imgFile)
   {
    $upload_dir = 'chef_images/'; // upload directory 
@@ -86,7 +87,7 @@ if(isset($_POST['update'])) {
    {   
     if($imgSize < 5000000)
     {
-     unlink($upload_dir.$edit_row['image']);
+     unlink($upload_dir.$chefEdit['image']); //remove image from the dir
      move_uploaded_file($tmp_dir,$upload_dir.$image);
     }
     else
@@ -99,25 +100,32 @@ if(isset($_POST['update'])) {
      echo $errMSG = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";  
    } 
   }
+  else
+  {
+   // if no image selected the old image remain as it is.
+   $image = $chefEdit['image']; // old image from database
+  } 
 
   if(!isset($errMSG))
   {
-  $count = $request->editChef($_POST['id'], $bio, $image, $radius);
+  $count = $chef->editChef($_SESSION['USERID'], $bio, $image, $radius);
 
   if($count) {
-      echo "Chef has been updated.";
+      echo "Chef profile has been updated.";
   } else {
-      echo "Problem updating the chef.";
+      echo "Problem updating the chef profile.";
     }
   }
 }
  /* Runs when the user chooses to delete their chef profile */
  if(isset($_POST['delete'])) {
-  $count = $result->deleteChef($_POST['id']);
+  $chefEdit = $chef->getChef($_SESSION['USERID']);
+  
+  unlink("user_images/".$chefEdit['image']);
+  $count = $chef->deleteChef($_SESSION['USERID']);
+   //$userId = $_SESSION['USERID'];
 
-   $userId = $_SESSION['USERID'];
-
-  header("Location: user_profile.php?id=$userId");
+  //header("Location: user_profile?id=$userId");
 }
 
 
