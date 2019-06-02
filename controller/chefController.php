@@ -127,7 +127,9 @@ $chef = new Chef(Database::getDb());
   /* Runs when the user chooses to delete their chef profile */
   if(isset($_POST['delete']))
   {
-    $chefDelete = $chef->getChef($_SESSION['USERID']);
+    $id = $_SESSION['USERID'];
+    $chefid = $_SESSION['CHEFID'];
+    $chefDelete = $chef->getChef($chefid);
     $id = $chefDelete['id'];
     $userid = $_SESSION['USERID'];
 

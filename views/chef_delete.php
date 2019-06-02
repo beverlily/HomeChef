@@ -1,8 +1,10 @@
 <?php
 include 'views/partials/header.php';
 include 'views/partials/menu.php';
- 
- $chefDetails = $chef->getChef($_SESSION['USERID']);
+$id = $_SESSION['USERID'];
+$chefid = $_SESSION['CHEFID'];
+
+$chefDetails = $chef->getChef($chefid);
  //$id = $chefDetails['id'];
 ?>
 	<main id="main">
