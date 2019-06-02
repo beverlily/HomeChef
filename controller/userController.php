@@ -49,6 +49,10 @@ if(isset($_POST['sign_in'])){
   $c=$user->signIn($email, $password, $db);
   if($c && password_verify($password, $c->password)){
     $_SESSION['USERID']= $c->id;
+	$order_id = $order->getCurrentOrder($_SESSION['USERID']);
+	if($order_id){
+		$_SESSION['ORDERID']=$order_id;
+	}
     $this_user=$user->getUser($_SESSION['USERID'],$db);
       if($this_user->IsChef == 1){
         header('Location:chef_details');

@@ -35,6 +35,18 @@ class Order
 		return $pstmt->fetchAll(PDO::FETCH_OBJ);
 	}
 
+	public function getCurrentOrder($user_id){
+		$sql = 'SELECT MAX(id)
+		FROM orders
+		WHERE user_id = :user_id';
+
+		$pstmt = $this->db->prepare($sql);
+		$pstmt->bindParam(':user_id', $user_id);
+		$pstmt->execute();
+		$orderId = $pstmt->fetchColumn();
+		return $orderId;
+	}
+
 	//Gets order by id
 	public function getOrderById($id){
 		$sql = 'SELECT * FROM orders WHERE id = :id';

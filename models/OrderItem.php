@@ -19,4 +19,18 @@ class OrderItem
 
 		return $pstmt->execute();
 	}
+
+	public function getOrderItems($order_id){
+		$sql = 'SELECT products.id, products.image, products.title, products_orders.quantity, products.price
+		FROM products_orders
+		JOIN products
+		ON products_orders.product_id = products.id
+		WHERE order_id = :order_id';
+
+		$pstmt = $this->db->prepare($sql);
+		$pstmt->bindParam(':order_id', $order_id);
+
+		$pstmt->execute();
+		return $pstmt->fetchAll(PDO::FETCH_OBJ);
+	}
 }
