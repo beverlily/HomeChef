@@ -1,7 +1,7 @@
 <?php
 $db = Database::getDb();
-$product = new Product;
-$chef = new Chef(Database::getDb());
+$product = new Product();
+$chef = new Cart();
 
 if(isset($_POST['add_product'])){
    $chefid = $chef->getChef($_SESSION['USERID']);
@@ -69,6 +69,9 @@ if(isset($_POST['view-product'])){
   header('Location:product_details');
 }
 
+if(isset($_POST["add-to-cart"])){
+	header('Location:all_products');
+}
 
 
  ?>

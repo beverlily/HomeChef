@@ -14,7 +14,12 @@ $p = $product->getProduct($productid, $db);
     <img class="product-image-main" src="images/<?=$p->image?>" alt="A picture of a product">
     <p><?=$p->description?></p>
     <p> Price: $<?=$p->price?> </p>
-  </div>
+		<form class='add-to-cart' method="POST">
+			<input type='hidden' name='id' value='$p->id' />
+			<input type='submit' name='add-to-cart' value="Add to Cart"/>
+		</form>
+	</div>
+</div>
 </main>
 
 

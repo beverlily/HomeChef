@@ -70,4 +70,3 @@ class Order
 		return $pstmt->execute();
 	}
 }
-?>
