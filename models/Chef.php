@@ -64,19 +64,19 @@ class Chef {
   /*Method that allows to delete the chef profile  - means that the chef profile is deleted
 	Parameters: $chefId - id of the chef that needs to be changed */
 
-	public function deleteChef($id){
+	public function deleteChef($id, $userId){
 
 		$sql = "DELETE FROM chefs 
-            WHERE user_id = :userId";
+            WHERE id = :id";
     
     $pst = $this->db->prepare($sql);
-    $pst->bindParam(':userId', $id);
+    $pst->bindParam(':id', $id);
     $count = $pst->execute();
 		
 		$sqlUser = "UPDATE users SET IsChef = 0 
 								 WHERE id=:userId";
 		$pst = $this->db->prepare($sqlUser);
-		$pst->bindParam(':userId', $id);
+		$pst->bindParam(':userId', $userId);
 		$pst->execute();
 		return $count;
   }
@@ -101,7 +101,7 @@ class Chef {
       return $chef;
 		 }
 
-		 public function getChefDetails() {  //join with users table
+		 public function getAllChefs() {  //join with users table
       $sql = "SELECT first_name, last_name, address, bio, address_radius FROM users
 							INNER JOIN chefs
 							ON users.id = chefs.user_id";

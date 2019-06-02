@@ -39,7 +39,6 @@ $products = $product->getProducts($chefDetails['id'], $db);
 							<input type='hidden' name='product_id' value='<?=$p->id?>'/>
 							<input type='submit' name='view-product' class="view-product" value='View Product' />
 						</form>
-						<!-- <p><a href="product_details"> View product details </a></p> -->
 				</div>
 			</div>
 			<?php endforeach; ?>

@@ -54,7 +54,7 @@ $chef = new Chef(Database::getDb());
          if(!isset($errMSG))
         {
 
-          $chef->isChef($_SESSION['USERID']);
+         
           $count = $chef->createChef($_SESSION['USERID'], $bio, $image, $radius);
 
           if($count) {
@@ -119,14 +119,21 @@ if(isset($_POST['update'])) {
   }
 }
  /* Runs when the user chooses to delete their chef profile */
- if(isset($_POST['delete'])) {
-  $chefEdit = $chef->getChef($_SESSION['USERID']);
-  
-  unlink("user_images/".$chefEdit['image']);
-  $count = $chef->deleteChef($_SESSION['USERID']);
-   //$userId = $_SESSION['USERID'];
+ if(isset($_POST['delete'])){
+  $chefDelete = $chef->getChef($_SESSION['USERID']);
+  $id = $chefDelete['id'];
+  $userid = $_SESSION['USERID'];
 
-  //header("Location: user_profile?id=$userId");
+  unlink('chef_images/'.$chefDelete['image']);
+
+  $count = $chef->deleteChef($id, $userid);
+  if($count) {
+    header("Location: user_profile");
+} else {
+    echo "Problem deleting the chef profile.";
+  }
+
+  
 }
 
 
