@@ -86,11 +86,11 @@ class Chef {
 		 retrieve data that needs to be changed */
 
  		public function getChef($id) {
-      $sql = "SELECT users.id, first_name, last_name, address, chefs.id, bio, image, address_radius
+      $sql = "SELECT users.id, first_name, last_name, address, chefs.id, user_id,  bio, image, address_radius
 			FROM users
 			INNER JOIN chefs
 			ON users.id = chefs.user_id
-			WHERE users.id = :chefId";
+			WHERE chefs.id = :chefId";
 
       $pst = $this->db->prepare($sql);
       $pst->bindParam(':chefId', $id);
@@ -102,9 +102,11 @@ class Chef {
 		 }
 
 		 public function getAllChefs() {  //join with users table
-      $sql = "SELECT first_name, last_name, address, bio, address_radius FROM users
+      $sql = "SELECT users.id, first_name, last_name, address, chefs.id, bio, image, address_radius 
+							FROM users
 							INNER JOIN chefs
-							ON users.id = chefs.user_id";
+							ON users.id = chefs.user_id
+							WHERE users.IsChef = 1";
 
       $pst = $this->db->prepare($sql);
       $pst->execute();

@@ -3,7 +3,10 @@ include 'views/partials/header.php';
 include 'views/partials/menu.php';
 
 $id = $_SESSION['USERID'];
-$chefDetails = $chef->getChef($id);
+$chefid = $_SESSION['CHEFID'];
+
+$chefDetails = $chef->getChef($chefid);
+//var_dump($chefDetails);
 
 $products = $product->getProducts($chefDetails['id'], $db);
 // var_dump($products);
@@ -22,9 +25,12 @@ $products = $product->getProducts($chefDetails['id'], $db);
 			<p>Address: <?php echo $chefDetails['address'] ?></p>
 			<p>Delivery Radius: <?php echo $chefDetails['address_radius'] ?> km</p>
 		</div>
-		<div>
-			<a type="submit" href="chef_update" name="update" class="chef-link">Edit Chef Profile</a><span> | </span><a type="submit" href="chef_delete" name="delete" class="chef-link">Delete Chef Profile</a>
-		</div>
+		<?php if(isset($_SESSION['USERID']) && $_SESSION['USERID'] == $chefDetails['user_id']) {
+		echo '<div>
+					<a type="submit" href="chef_update" name="update" class="chef-link">Edit Chef Profile</a><span> | </span><a type="submit" href="chef_delete" name="delete" class="chef-link">Delete Chef Profile</a>
+					</div>';
+		}
+		?>
 		<div>
 			<!--Need to Add styling here to display products -->
 			<h2>Products</h2>

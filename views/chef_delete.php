@@ -18,11 +18,11 @@ include 'views/partials/menu.php';
         <p>Delivery Radius: <?php echo $chefDetails['address_radius'] ?> km</p>
       </div>
       <div>
+      <a  href="chef_details" class="chef-link">Cancel</a>
       <form action="user_profile" method="POST">
-      <button type="submit" name="delete">Delete</button> 
+        <button type="submit" name="delete">Delete</button> 
       </form>
-      </div>
-        <a  href="chef_details" class="chef-link">Cancel</a>
+      </div>       
     </div>
 	</main>
 <?php  include 'views/partials/footer.php'; ?>
