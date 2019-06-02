@@ -56,23 +56,23 @@ class Order
 		return $pstmt->fetch(PDO::FETCH_OBJ);
 	}
 
-	//Adds order for a user
-	public function addOrder($userId, $name, $current, $goal){
-		$sql = 'INSERT INTO measurements(user_id, name, current, goal)
-			VALUES (:userId, :name, :current, :goal)';
+	public function getOrderTotal($order_id){
+		$sql = 'SELECT SUM(products_orders.quantity * products.price) TotalPrice
+		FROM products_orders
+		JOIN products
+		ON products_orders.product_id = products.id
+		WHERE products_orders.order_id = :order_id';
 
 		$pstmt = $this->db->prepare($sql);
-		$pstmt->bindParam(':userId', $userId);
-		$pstmt->bindParam(':name', $name);
-		$pstmt->bindParam(':current', $current);
-		$pstmt->bindParam(':goal', $goal);
+		$pstmt->bindParam(':order_id', $order_id);
+		$pstmt->execute();
 
-		//count
-		return $pstmt->execute();
+		$orderTotal = $pstmt->fetchColumn();
+		return $orderTotal;
 	}
 
 	//Updates order by Id
-	public function updateOrder($id, $name, $current, $goal){
+	public function updateOrder($id){
 		$sql = 'UPDATE orders
 			SET name = :name,
 			current = :current,

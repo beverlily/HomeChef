@@ -291,8 +291,8 @@ form{
   padding:30px 20px 20px 20px;
 
   -webkit-box-shadow: 4px 7px 5px 0px rgba(71,71,71,0.64);
--moz-box-shadow: 4px 7px 5px 0px rgba(71,71,71,0.64);
-box-shadow: 4px 7px 5px 0px rgba(71,71,71,0.64);
+  -moz-box-shadow: 4px 7px 5px 0px rgba(71,71,71,0.64);
+  box-shadow: 4px 7px 5px 0px rgba(71,71,71,0.64);
 }
 
 label{
@@ -450,12 +450,19 @@ button a{
   border-radius: 50%;
 }
 
-#order-item-list{
+#cart{
 	background-color: white;
 	border: 1px solid lightgrey;
     padding: 50px;
+	margin: 50px;
 }
 
+#cart h2{
+	text-transform: uppercase;
+	font-weight: bold;
+	width 100%;
+	border-bottom: 2px solid #4daba4;
+}
 
 #order-item-list li{
 	align-items: center;
@@ -466,4 +473,10 @@ button a{
 
 .item-title{
 	font-weight: bold;
+}
+
+#cart form{
+	box-shadow: none;
+	margin: 0;
+	padding: 0;
 }

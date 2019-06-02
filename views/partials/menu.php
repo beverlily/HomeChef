@@ -22,7 +22,8 @@ if($this_user->IsChef == 1){
        <h2 class="hidden">Main Navigation</h2>
        <ul>
         <li><a class= "alt" href="<?=$profile?>">Profile</a></li>
-        <li><a class= "alt" href="">Browse</a></li>
+        <li><a class= "alt" href="all_products">Browse</a></li>
+	    <li><a class= "alt" href="current_cart">View Cart</a></li>
         <li><a class= "alt" href="destroy_session">Logout</a></li>
        </ul>
       </nav>

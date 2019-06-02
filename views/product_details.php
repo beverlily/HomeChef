@@ -16,7 +16,6 @@ $p = $product->getProduct($productid, $db);
 			<p><?=$p->description?></p>
 			<p> Price: $<?=$p->price?> </p>
 			<input type='hidden' name='id' value="<?=$p->id?>" />
-			<input type='hidden' name='price' value="<?=$p->price?>" />
 			<label for="quantity">Quantity</label>
 			<input id="quantity" type='number' name='quantity' min='1' max='10' value='1' />
 			<br />
