@@ -1,7 +1,8 @@
 <?php
 
 $db = Database::getDb();
-$user = new User;
+$user = new User();
+$order = new Order();
 
 
 // Logic for registering a new user
@@ -19,14 +20,22 @@ if(isset($_POST['add_user'])){
     echo "All fields are required";
   }elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
       echo "please enter a valid email address";
-        }else{$c = $user->addUser($fname, $lname, $email, $address, $password, $db);
+        } else {
+		  $c = $user->addUser($fname, $lname, $email, $address, $password, $db);
           if($c){
             $_SESSION['USERID']= $c;
-            header('Location:user_profile');
-            }else{
-            echo "Error adding user";
-          }
-        }
+		    $orderId = $order->createOrder($_SESSION['USERID'],$address);
+			if($orderId){
+				header('Location:user_profile');
+				$_SESSION['ORDERID']= $orderId;
+            }
+			else{
+				echo "Error creating cart";
+			}
+		} else {
+			echo "Error adding user";
+	  	}
+    }
 }
 
 // Logic for logging in
@@ -40,6 +49,10 @@ if(isset($_POST['sign_in'])){
   $c=$user->signIn($email, $password, $db);
   if($c && password_verify($password, $c->password)){
     $_SESSION['USERID']= $c->id;
+	$order_id = $order->getCurrentOrder($_SESSION['USERID']);
+	if($order_id){
+		$_SESSION['ORDERID']=$order_id;
+	}
     $this_user=$user->getUser($_SESSION['USERID'],$db);
       if($this_user->IsChef == 1){
         header('Location:chef_details');

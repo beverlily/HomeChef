@@ -17,6 +17,7 @@
  * 14. USER PROFILE PAGE*
  *15. CHEF PROFILE PAGE
  *16. PRODUCT PAGES
+ *17. ORDER PAGES
  ***********************************************/
 
 /*1. DEFAULT OVERRIDES*/
@@ -437,4 +438,32 @@ button a{
   margin:10px auto;
   display: block;
   text-align: center;
+}
+
+
+/*ORDER PAGES*/
+.order-item{
+  margin-right: 20px;
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#order-item-list{
+	background-color: white;
+	border: 1px solid lightgrey;
+    padding: 50px;
+}
+
+
+#order-item-list li{
+	align-items: center;
+	border-bottom: 1px solid lightgray;
+	padding-bottom: 30px;
+	margin-bottom: 30px;
+}
+
+.item-title{
+	font-weight: bold;
 }

@@ -11,10 +11,20 @@ $p = $product->getProduct($productid, $db);
     <h2> <?=$p->title?> </h2>
   </div>
 <div id="chef-pages">
-    <img class="product-image-main" src="images/<?=$p->image?>" alt="A picture of a product">
-    <p><?=$p->description?></p>
-    <p> Price: $<?=$p->price?> </p>
-  </div>
+    <img class="product-image" src="images/<?=$p->image?>" alt="A picture of a product">
+		<form class='add-to-cart' method="POST">
+			<p><?=$p->description?></p>
+			<p> Price: $<?=$p->price?> </p>
+			<input type='hidden' name='id' value="<?=$p->id?>" />
+			<input type='hidden' name='price' value="<?=$p->price?>" />
+			<label for="quantity">Quantity</label>
+			<input id="quantity" type='number' name='quantity' min='1' max='10' value='1' />
+			<br />
+			<br />
+			<input type='submit' name='add-to-cart' value="Add to Cart"/>
+		</form>
+	</div>
+</div>
 </main>
 
 

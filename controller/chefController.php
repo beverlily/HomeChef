@@ -38,7 +38,7 @@ $chef = new Chef(Database::getDb());
           $image = rand(1000,1000000).".".$imgExt;
 
           // allow valid image file formats
-          if(in_array($imgExt, $valid_extensions)){   
+          if(in_array($imgExt, $valid_extensions)){
            // check file size '5MB'
            if($imgSize < 5000000)    {
             move_uploaded_file($tmp_dir,$upload_dir.$image);
@@ -63,7 +63,7 @@ $chef = new Chef(Database::getDb());
           } else {
               echo "Problem creating chef profile.";
           }
-        } 
+        }
       }
 
 
@@ -77,7 +77,7 @@ if(isset($_POST['update'])) {
   $tmp_dir = $_FILES['chef_image']['tmp_name'];
   $imgSize = $_FILES['chef_image']['size'];
   $radius = $_POST['radius'];
-   
+
   if($imgFile)
   {
    $upload_dir = 'chef_images/'; // upload directory
@@ -105,7 +105,7 @@ if(isset($_POST['update'])) {
   {
    // if no image selected the old image remain as it is.
    $image = $chefEdit['image']; // old image from database
-  } 
+  }
 
   if(!isset($errMSG))
   {
