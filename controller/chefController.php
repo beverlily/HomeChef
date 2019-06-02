@@ -72,7 +72,9 @@ $chef = new Chef(Database::getDb());
 
   if(isset($_POST['update'])) 
   {
-    $chefEdit = $chef->getChef($_SESSION['USERID']);
+    $id = $_SESSION['USERID'];
+    $chefid = $_SESSION['CHEFID'];
+    $chefEdit = $chef->getChef($chefid);
     $bio = filter_var($_POST['chef_bio'], FILTER_SANITIZE_STRING);
     $imgFile = $_FILES['chef_image']['name'];
     $tmp_dir = $_FILES['chef_image']['tmp_name'];
