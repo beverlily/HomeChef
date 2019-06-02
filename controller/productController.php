@@ -73,10 +73,9 @@ if(isset($_POST["add-to-cart"])){
 	$product_id = $_POST['id'];
 	$order_id = $_SESSION['ORDERID'];
 	$quantity = $_POST['quantity'];
-	$price = $_POST['price'];
-	var_dump($_SESSION);
-	var_dump($_POST);
-	$orderItem->addOrderItem($order_id, $product_id, $quantity, $price);
+	// var_dump($_SESSION);
+	// var_dump($_POST);
+	$orderItem->addOrderItem($order_id, $product_id, $quantity);
 	header('Location:all_products');
 }
 

@@ -1,6 +1,7 @@
 <?php
 class OrderItem
 {
+	//products_orders
 	private $db;
     private $quantity;
 	public function __construct(){
@@ -8,15 +9,42 @@ class OrderItem
 	}
 
 	public function addOrderItem($order_id, $product_id, $quantity){
-		$sql = 'INSERT INTO products_orders(order_id, product_id, quantity)
-			VALUES (:order_id, :product_id, :quantity)';
+		//checks to see if product is already in cart
+		$sql = 'SELECT *
+		FROM products_orders
+		WHERE order_id = :order_id && product_id= :product_id';
 
 		$pstmt = $this->db->prepare($sql);
 		$pstmt->bindParam(':order_id', $order_id);
-		$pstmt->bindParam(':product_id', $product_id);
-		$pstmt->bindParam(':quantity', $quantity);
+	    $pstmt->bindParam(':product_id', $product_id);
 
-		return $pstmt->execute();
+		$pstmt->execute();
+		$products = $pstmt->fetchAll(PDO::FETCH_OBJ);
+
+		//if product is in cart, increases the quantity
+		if($products){
+			$sql = 'UPDATE products_orders
+				SET quantity = quantity + :quantity
+				WHERE order_id = :order_id && product_id= :product_id';
+			$pstmt = $this->db->prepare($sql);
+			$pstmt->bindParam(':order_id', $order_id);
+			$pstmt->bindParam(':product_id', $product_id);
+			$pstmt->bindParam(':quantity', $quantity);
+
+			return $pstmt->execute();
+		}
+		else{
+			//if product isnt in order, adds to product to cart
+			$sql = 'INSERT INTO products_orders(order_id, product_id, quantity)
+				VALUES (:order_id, :product_id, :quantity)';
+
+			$pstmt = $this->db->prepare($sql);
+			$pstmt->bindParam(':order_id', $order_id);
+			$pstmt->bindParam(':product_id', $product_id);
+			$pstmt->bindParam(':quantity', $quantity);
+
+			return $pstmt->execute();
+		}
 	}
 
 	public function getOrderItems($order_id){
