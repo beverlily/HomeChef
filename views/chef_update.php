@@ -2,8 +2,9 @@
 include 'views/partials/header.php';
 include 'views/partials/menu.php';
 $id = $_SESSION['USERID'];
+$chefid = $_SESSION['CHEFID'];
 
-$chefEdit = $chef->getChef($id);
+$chefEdit = $chef->getChef($chefid);
 ?>
 <main id="main">
 	<div class="banner-pages">
@@ -22,7 +23,7 @@ $chefEdit = $chef->getChef($id);
 		</div>
 		<div class="form-row">
 			<label for="radius">Address radius:</label>
-			<input type="text" name="radius" id="radius" value="<?php echo $chefEdit['address_radius']; ?>">
+			<input type="number" min="1" max="30"  name="radius" id="radius" value="<?php echo $chefEdit['address_radius']; ?>">
 		</div>
 		<div>
 			<button type="submit" name="update">Update Chef profile!</button>

@@ -9,7 +9,7 @@ include 'views/partials/menu.php';
 	<form method="POST" enctype="multipart/form-data">
 		<div class="form-row">
 			<label for="chef_bio">Bio:</label>
-			<textarea type="text" name="chef_bio" id="chef_bio" ></textarea>
+			<textarea type="text" placeholder="Short Bio" name="chef_bio" id="chef_bio" ></textarea>
 		</div>
 		<div class="form-row">
 			<label for="chef_image">Image:</label>
@@ -17,7 +17,7 @@ include 'views/partials/menu.php';
 		</div>
 		<div class="form-row">
 			<label for="radius">Address radius:</label>
-			<input type="text" name="radius" id="radius">
+			<input type="number" min="1" max="30" value="1" name="radius" id="radius">
 		</div>
 		<div>
 			<button type="submit"  name="create">Become a Chef!</button>
