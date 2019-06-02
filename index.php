@@ -12,6 +12,7 @@ require_once 'models/Chef.php';
 require_once 'controller/userController.php';
 require_once 'controller/chefController.php';
 require_once 'controller/productController.php';
+require_once 'controller/orderItemController.php';
 
 
 
