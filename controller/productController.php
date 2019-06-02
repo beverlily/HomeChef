@@ -1,7 +1,7 @@
 <?php
 $db = Database::getDb();
 $product = new Product();
-$chef = new Cart();
+$orderItem = new OrderItem();
 
 if(isset($_POST['add_product'])){
    $chefid = $chef->getChef($_SESSION['USERID']);
@@ -70,6 +70,13 @@ if(isset($_POST['view-product'])){
 }
 
 if(isset($_POST["add-to-cart"])){
+	$product_id = $_POST['id'];
+	$order_id = $_SESSION['ORDERID'];
+	$quantity = $_POST['quantity'];
+	$price = $_POST['price'];
+	var_dump($_SESSION);
+	var_dump($_POST);
+	$orderItem->addOrderItem($order_id, $product_id, $quantity, $price);
 	header('Location:all_products');
 }
 

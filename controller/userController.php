@@ -1,7 +1,9 @@
 <?php
+
 $db = Database::getDb();
 $user = new User();
-$cart = new Cart();
+$order = new Order();
+
 
 // Logic for registering a new user
 // Grabbing variables from the form and hashing the password
@@ -18,17 +20,22 @@ if(isset($_POST['add_user'])){
     echo "All fields are required";
   }elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
       echo "please enter a valid email address";
-        }else{
+        } else {
 		  $c = $user->addUser($fname, $lname, $email, $address, $password, $db);
           if($c){
             $_SESSION['USERID']= $c;
-			//when user creates an account, they start off with an empty cart
-		    $cart->createCart($_SESSION['USERID'],$address);
-            header('Location:user_profile');
-            }else{
-            echo "Error adding user";
-          }
-        }
+		    $orderId = $order->createOrder($_SESSION['USERID'],$address);
+			if($orderId){
+				header('Location:user_profile');
+				$_SESSION['ORDERID']= $orderId;
+            }
+			else{
+				echo "Error creating cart";
+			}
+		} else {
+			echo "Error adding user";
+	  	}
+    }
 }
 
 // Logic for logging in
