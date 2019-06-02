@@ -15,6 +15,8 @@
  * 12. SKIP TO MAIN
  * 13. FORMS *
  * 14. USER PROFILE PAGE*
+ *15. CHEF PROFILE PAGE
+ *16. PRODUCT PAGES
  ***********************************************/
 
 /*1. DEFAULT OVERRIDES*/
@@ -387,4 +389,52 @@ button a{
 }
 .chef-link:hover{
   color: #344458;
+}
+
+#product-content{
+  margin:0 auto;
+  justify-content: space-between;
+}
+
+
+
+.product-image{
+  margin:10px 50px;
+  width: 225px;
+  height: 225px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.hidden-form{
+  background-color:none;
+  width:auto;
+  display:block;
+  margin:0 auto;
+  padding:0;
+
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(71,71,71,0.64);
+  -moz-box-shadow: 0px 0px 0px 0px rgba(71,71,71,0.64);
+  box-shadow: 0px 0px 0px 0px rgba(71,71,71,0.64);
+
+}
+
+.view-product{
+  background-color:white;
+  border:0;
+  text-decoration: none;
+  color:#E1584B;
+  font-size:1em;
+}
+
+.view-product:hover{
+  color:#4daba4;
+  text-decoration: underline;
+}
+
+/*PRODUCT PAGES*/
+#product-page img, #product-page{
+  margin:10px auto;
+  display: block;
+  text-align: center;
 }

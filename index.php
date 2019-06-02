@@ -8,6 +8,9 @@ require_once 'models/users.php';
 require_once 'controller/userController.php';
 require_once 'models/Chef.php';
 require_once 'controller/chefController.php';
+require_once 'models/products.php';
+require_once 'controller/productController.php';
+
 
 
 $_SERVER['REQUEST_URI'] = str_replace( ROOT, '', $_SERVER['REQUEST_URI'] );

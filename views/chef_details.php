@@ -5,6 +5,8 @@ include 'views/partials/menu.php';
 $id = $_SESSION['USERID'];
 $chefDetails = $chef->getChef($id);
 
+$products = $product->getProducts($chefDetails['id'], $db);
+// var_dump($products);
 ?>
 	<main id="main">
 		<div class="banner-pages">
@@ -28,18 +30,23 @@ $chefDetails = $chef->getChef($id);
 			<h2>Products</h2>
 		</div>
 		<div id="product-content" class="flex-container">
+		<?php foreach($products as $p):?>
 			<div class="products flex-container">
 				<div class="product-text">
-						<img src="" alt="A picture of a product">
-						<div class="product-details">
-							<p></p>
-						</div>
+					<h2><?=$p->title?> </h2>
+						<img class="product-image" src="images/<?=$p->image?>" alt="A picture of a product">
+						<form class="hidden-form" action="" method="POST">
+							<input type='hidden' name='product_id' value='<?=$p->id?>'/>
+							<input type='submit' name='view-product' class="view-product" value='View Product' />
+						</form>
+						<!-- <p><a href="product_details"> View product details </a></p> -->
 				</div>
 			</div>
+			<?php endforeach; ?>
 		</div>
 		<div>
 			<!-- Need to Make create_product.php file -->
-			<button type="submit" name="create_product"><a href="product_create" name="create">Create a new product!</a></button>
+			<button type="submit" name="create_product"><a href="create_product" name="create">Create a new product!</a></button>
 		</div>
 	</div>
 	</main>
