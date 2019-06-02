@@ -1,6 +1,7 @@
 <?php
 include 'views/partials/header.php';
 include 'views/partials/menu.php';
+
 $id = $_SESSION['USERID'];
 $chefDetails = $chef->getChef($id);
 
@@ -15,6 +16,7 @@ $chefDetails = $chef->getChef($id);
 		</div>
 		<div>
 			<h1><?php echo $chefDetails['first_name'] . ' ' . $chefDetails['last_name'] ?></h1>
+			<!-- <p>Bio: <?php echo $chefDetails['bio'] ?></p> -->
 			<p>Address: <?php echo $chefDetails['address'] ?></p>
 			<p>Delivery Radius: <?php echo $chefDetails['address_radius'] ?> km</p>
 		</div>

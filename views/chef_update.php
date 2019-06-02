@@ -1,17 +1,10 @@
 <?php 
 include 'views/partials/header.php';
 include 'views/partials/menu.php';
-
-//$id = (isset($_POST['id']) ? $_POST['id'] : '');
 $id = $_SESSION['USERID'];
 
 	$chefEdit = $chef->getChef($id);
-	
-	//echo $chefEdit['image'];
-//var_dump($chef);
-// echo 'Hi'. $_SESSION['USERID'];
 ?>
-<!--Need to  Fix update functionality -->
 <main id="main">
 	<div class="banner-pages">
 		<h1>Update the Chef profile</h1>
