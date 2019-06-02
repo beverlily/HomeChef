@@ -6,6 +6,7 @@ class Database
 
   private static $user= 'root';
   private static $pass= 'root';
+  // private static $pass= '';
   private static $db = 'HomeChef';
   private static $dsn = 'mysql:host=localhost;dbname=HomeChef';
   private static $dbcon;

@@ -10,6 +10,7 @@ require_once 'models/Chef.php';
 require_once 'controller/chefController.php';
 require_once 'models/products.php';
 require_once 'controller/productController.php';
+require_once 'models/Order.php';
 
 
 
