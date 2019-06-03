@@ -2,7 +2,7 @@
 $chef = new Chef(Database::getDb());
 
 /*  When the form on the chef page is successfully submitted the entered data
-      inserts into the chefs table and IsChef value of users table sets to 1 - 
+      inserts into chefs table and IsChef value of users table sets to 1 - 
       means the user has chef profile.
       If something goes wrong "Problem adding the request." message is displayed */
 
@@ -67,13 +67,11 @@ $chef = new Chef(Database::getDb());
   }
 
 
-/* When edit form is successfully submitted, updated data is inserted into chefs table */
+/* Runs when the user chooses to edit their chef profile */
 
 
   if(isset($_POST['update'])) 
   {
-    //$id = $_SESSION['USERID'];
-    //$chefid = $_SESSION['CHEFID'];
     $chefEdit = $chef->getChef($_SESSION['USERID']);
     $bio = filter_var($_POST['chef_bio'], FILTER_SANITIZE_STRING);
     $imgFile = $_FILES['chef_image']['name'];
@@ -124,6 +122,7 @@ $chef = new Chef(Database::getDb());
       }
     }
   }
+  
   /* Runs when the user chooses to delete their chef profile */
   if(isset($_POST['delete']))
   {

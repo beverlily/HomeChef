@@ -50,7 +50,7 @@ class Chef {
 
 
   /*Method that allows to edit the chef info
-	Parameters: $chefId - id of the chef that needs to be changed
+	Parameters: $userId - user_id of the chef 
 							$bio - bio of the chef
               $image - image of the chef
               $radius - delivery radius */
@@ -100,9 +100,8 @@ class Chef {
 		return $count;
   }
 
-  	/*Method that gets the chef info with the specific id.
-		 The method is used for update functionality to
-		 retrieve data that needs to be changed */
+	
+	/*Method that gets the chef info with the specific id.*/
 
  		public function getChef($id) {
       $sql = "SELECT users.id, first_name, last_name, address, chefs.id, user_id,  bio, image, address_radius
