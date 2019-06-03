@@ -9,7 +9,7 @@ class Chef {
 
   /*Method that allows to create a new chef
 	Parameters: $userId - id of a user who wants to become a chef (session id)
-							$bio - short bio 
+							$bio - short bio
               $image - image of the chef
               $radius - delivery radius  */
 
@@ -27,8 +27,8 @@ class Chef {
 
 		$count = $pst->execute();
 
-		// query that sets value = 1 in IsChef column of users table - means that users have chef profiles  
-		$sqlUser = "UPDATE users SET IsChef = 1 
+		// query that sets value = 1 in IsChef column of users table - means that users have chef profiles
+		$sqlUser = "UPDATE users SET IsChef = 1
 								 WHERE id=:userId";
 		$pst = $this->db->prepare($sqlUser);
 		$pst->bindParam(':userId', $userId);
@@ -82,14 +82,14 @@ class Chef {
     $pst->bindParam(':id', $id);
     $pst->execute();
 
-		$sql = "DELETE FROM chefs 
+		$sql = "DELETE FROM chefs
             WHERE id = :id";
-    
+
     $pst = $this->db->prepare($sql);
     $pst->bindParam(':id', $id);
     $count = $pst->execute();
-		
-		$sqlUser = "UPDATE users SET IsChef = 0 
+
+		$sqlUser = "UPDATE users SET IsChef = 0
 								 WHERE id=:userId";
 		$pst = $this->db->prepare($sqlUser);
 		$pst->bindParam(':userId', $userId);
@@ -118,9 +118,9 @@ class Chef {
 
       return $chef;
 		 }
-	
+
 		 public function getAllChefs() {  //join with users table
-      $sql = "SELECT users.id, first_name, last_name, address, chefs.id, bio, image, address_radius 
+      $sql = "SELECT users.id, first_name, last_name, address, chefs.id, bio, image, address_radius
 							FROM users
 							INNER JOIN chefs
 							ON users.id = chefs.user_id
@@ -134,6 +134,21 @@ class Chef {
  	  }
 
 
+	  public function getChefId($user_id) {
+		  $sql = "SELECT chefs.id AS chefId
+		  FROM users
+		  INNER JOIN chefs
+		  ON users.id = chefs.user_id
+		  WHERE users.id = :user_id";
+
+			$pst = $this->db->prepare($sql);
+			$pst->bindParam(':user_id', $user_id);
+			$pst->execute();
+
+			$chef = $pst->fetch();
+
+			return $chef;
+	   }
 }
 
 
