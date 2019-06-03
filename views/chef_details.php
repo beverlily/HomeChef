@@ -51,8 +51,8 @@ $products = $product->getProducts($chefDetails['id'], $db);
 		</div>
 		<?php if(isset($_SESSION['USERID']) && $_SESSION['USERID'] == $chefDetails['user_id']) {
 		echo '<div>
-			<button type="submit" name="create_product"><a href="create_product" name="create">Create a new product!</a></button>
-		</div>';
+					<button type="submit" name="create_product"><a href="create_product" name="create">Create a new product!</a></button>
+				</div>';
 		}
 		?>
 	</div>
