@@ -5,17 +5,17 @@
    //if user isn't logged in, redirects them to the log in page
    isset($_SESSION['USERID']) ? $userId = $_SESSION['USERID'] :  header('Location: ../sign_in');
 
-   $order_id = $_SESSION['ORDERID'];
+   $orderId = $_SESSION['ORDERID'];
 
    $orderItem = new OrderItem();
-   $orderItems = $orderItem->getOrderItems($order_id);
+   $orderItems = $orderItem->getOrderItems($orderId);
 
    $order = new Order();
-   $currentOrder = $order->getOrderById($_SESSION['ORDERID']);
+   $currentOrder = $order->getOrderById($orderId);
 
    //if there are items in the cart, calculate the total
    if($orderItems){
-	  $orderTotal = "$".$order->getOrderTotal($order_id);
+	  $totalPrice = $order->getOrderTotal($orderId);
    }
 
    ?>
@@ -39,12 +39,12 @@
 							 <br />
 							 <div class='item-edit-delete'>
 							    <form method='POST' action='edit_cart_item'>
-									<input type='hidden' name='order_id' value='$order_id' />
+									<input type='hidden' name='order_id' value='$orderId' />
 									<input type='hidden' name='product_id' value='$item->id' />
 									<input type='submit' name='edit_order_item' value='Edit Item'>
 								</form>
 								<form method='POST'>
-								<input type='hidden' name='order_id' value='$order_id' />
+								<input type='hidden' name='order_id' value='$orderId' />
 									<input type='hidden' name='product_id' value='$item->id' />
 									<input type='submit' name='delete_order_item' value='Remove From Cart'>
 								</form>
@@ -54,11 +54,12 @@
 					  }
 					?>
 				<div>
-					 <span class='item-title'>Total Price: <?=$orderTotal?></span>
+					 <span class='item-title'>Total Price: $<?=$totalprice?></span>
 				</div>
 				</ul>
 				<form method="POST" id="place-order-form">
-				  <input type="hidden" name="order_id" value="<?=$order_id?>" />
+				  <input type="hidden" name="order_id" value="<?=$orderId?>" />
+				  <input type="hidden" name="total_price" value="<?=$totalPrice?>" />
 				  <label for id="address">Delivery Address:</label>
 				  <input type="text" name="address" value="<?=$currentOrder->address?>"/>
 				  <br />
