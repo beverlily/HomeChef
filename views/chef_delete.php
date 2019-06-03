@@ -5,6 +5,7 @@ $id = $_SESSION['USERID'];
 
 $chefDetails = $chef->getChef($id);
  //$id = $chefDetails['id'];
+ 
 ?>
 	<main id="main">
     <div id="chef-pages">
@@ -21,6 +22,7 @@ $chefDetails = $chef->getChef($id);
       <div>
       <a  href="chef_details" class="chef-link">Cancel</a>
       <form action="user_profile" method="POST">
+      <input type='hidden' name = 'id' value='<?php echo $chefDetails['id'] ?>'/>
         <button type="submit" name="delete">Delete</button> 
       </form>
       </div>       

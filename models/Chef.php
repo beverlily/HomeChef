@@ -1,7 +1,7 @@
 <?php
 class Chef {
   private $db;
-  /* Constructor function for Request
+  /* Constructor function for Chef
            Parameters: $db the PDO for the database */
 	public function __construct($db) {
     $this->db = $db;
@@ -35,7 +35,18 @@ class Chef {
 		$pst->execute();
 		return $count;
 
-  }
+	}
+	public function getChefInfo($id){
+		$sql = "SELECT * FROM chefs WHERE id = :chefId";
+
+      $pst = $this->db->prepare($sql);
+      $pst->bindParam(':chefId', $id);
+      $pst->execute();
+
+      $c = $pst->fetch();
+
+      return $c;
+	}
 
 
   /*Method that allows to edit the chef info
@@ -61,10 +72,15 @@ class Chef {
 
 	}
 
-  /*Method that allows to delete the chef profile  - means that the chef profile is deleted
-	Parameters: $chefId - id of the chef that needs to be changed */
+  /*Method that allows to delete the chef profile  and all dependant data*/
 
 	public function deleteChef($id, $userId){
+		$sql = "DELETE FROM products 
+            WHERE chef_id = :id";
+    
+    $pst = $this->db->prepare($sql);
+    $pst->bindParam(':id', $id);
+    $pst->execute();
 
 		$sql = "DELETE FROM chefs
             WHERE id = :id";
@@ -78,6 +94,9 @@ class Chef {
 		$pst = $this->db->prepare($sqlUser);
 		$pst->bindParam(':userId', $userId);
 		$pst->execute();
+
+		
+		
 		return $count;
   }
 

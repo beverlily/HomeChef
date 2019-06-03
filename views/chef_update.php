@@ -4,12 +4,16 @@ include 'views/partials/menu.php';
 $id = $_SESSION['USERID'];
 
 $chefEdit = $chef->getChef($id);
+// if(isset($_POST['id'])) {
+// 	$chefEdit = $chef->getChefInfo($_POST['id']);
+
 ?>
 <main id="main">
 	<div class="banner-pages">
 		<h1>Update the Chef profile</h1>
 	</div>
   <form action="chef_details"  method="POST" enctype="multipart/form-data">
+	<!-- <input type="hidden" name="id" value="<?= $_POST['id']; ?>"> -->
 		<div class="form-row">
 			<label for="chef_bio">Bio</label>
 			<textarea type="text" name="chef_bio" id="chef_bio" ><?php echo $chefEdit['bio']; ?></textarea>
