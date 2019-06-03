@@ -72,9 +72,9 @@ $chef = new Chef(Database::getDb());
 
   if(isset($_POST['update'])) 
   {
-    $id = $_SESSION['USERID'];
-    $chefid = $_SESSION['CHEFID'];
-    $chefEdit = $chef->getChef($chefid);
+    //$id = $_SESSION['USERID'];
+    //$chefid = $_SESSION['CHEFID'];
+    $chefEdit = $chef->getChef($_SESSION['USERID']);
     $bio = filter_var($_POST['chef_bio'], FILTER_SANITIZE_STRING);
     $imgFile = $_FILES['chef_image']['name'];
     $tmp_dir = $_FILES['chef_image']['tmp_name'];
@@ -127,9 +127,10 @@ $chef = new Chef(Database::getDb());
   /* Runs when the user chooses to delete their chef profile */
   if(isset($_POST['delete']))
   {
-    $id = $_SESSION['USERID'];
-    $chefid = $_SESSION['CHEFID'];
-    $chefDelete = $chef->getChef($chefid);
+    // $id = $_SESSION['USERID'];
+    // $chefid = $_SESSION['CHEFID'];
+
+    $chefDelete = $chef->getChef($_SESSION['USERID']);
     $id = $chefDelete['id'];
     $userid = $_SESSION['USERID'];
 
@@ -147,10 +148,11 @@ $chef = new Chef(Database::getDb());
 
     
   }
+  
 
   $count = $chef->getAllChefs();
   if(isset($_POST['view-chef'])){
-    $_SESSION['CHEFID']= $_POST['chef_id'];
+    $_SESSION['CHEFID'] = $_POST['chef_id'];
     header('Location:chef_details');
   }
 ?>

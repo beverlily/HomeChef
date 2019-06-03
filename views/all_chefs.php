@@ -4,7 +4,7 @@ include 'views/partials/menu.php';
 
 
 $chefs = $chef->getAllChefs();
-var_dump($chefs);
+//var_dump($chefs);
 ?>
 
 <main id="main">

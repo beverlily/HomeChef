@@ -90,17 +90,17 @@ class Chef {
 			FROM users
 			INNER JOIN chefs
 			ON users.id = chefs.user_id
-			WHERE chefs.id = :chefId";
+			WHERE users.id = :id";
 
       $pst = $this->db->prepare($sql);
-      $pst->bindParam(':chefId', $id);
+      $pst->bindParam(':id', $id);
       $pst->execute();
 
       $chef = $pst->fetch();
 
       return $chef;
 		 }
-
+	
 		 public function getAllChefs() {  //join with users table
       $sql = "SELECT users.id, first_name, last_name, address, chefs.id, bio, image, address_radius 
 							FROM users

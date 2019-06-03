@@ -2,10 +2,11 @@
 include 'views/partials/header.php';
 include 'views/partials/menu.php';
 
-$id = $_SESSION['USERID'];
-$chefid = $_SESSION['CHEFID'];
+//if(isset($_SESSION['USERID']) ? $id = $_SESSION['USERID'] : "");
 
-$chefDetails = $chef->getChef($chefid);
+//$chefid = $_SESSION['CHEFID'];
+
+$chefDetails = $chef->getChef($_SESSION['USERID']);
 //var_dump($chefDetails);
 
 $products = $product->getProducts($chefDetails['id'], $db);
@@ -49,10 +50,12 @@ $products = $product->getProducts($chefDetails['id'], $db);
 			</div>
 			<?php endforeach; ?>
 		</div>
-		<div>
-			<!-- Need to Make create_product.php file -->
+		<?php if(isset($_SESSION['USERID']) && $_SESSION['USERID'] == $chefDetails['user_id']) {
+		echo '<div>
 			<button type="submit" name="create_product"><a href="create_product" name="create">Create a new product!</a></button>
-		</div>
+		</div>';
+		}
+		?>
 	</div>
 	</main>
 	<?php  include 'views/partials/footer.php'; ?>

@@ -2,9 +2,8 @@
 include 'views/partials/header.php';
 include 'views/partials/menu.php';
 $id = $_SESSION['USERID'];
-$chefid = $_SESSION['CHEFID'];
 
-$chefDetails = $chef->getChef($chefid);
+$chefDetails = $chef->getChef($id);
  //$id = $chefDetails['id'];
 ?>
 	<main id="main">
