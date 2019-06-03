@@ -72,10 +72,15 @@ class Chef {
 
 	}
 
-  /*Method that allows to delete the chef profile  - means that the chef profile is deleted
-	Parameters: $chefId - id of the chef that needs to be changed */
+  /*Method that allows to delete the chef profile  and all dependant data*/
 
 	public function deleteChef($id, $userId){
+		$sql = "DELETE FROM products 
+            WHERE chef_id = :id";
+    
+    $pst = $this->db->prepare($sql);
+    $pst->bindParam(':id', $id);
+    $pst->execute();
 
 		$sql = "DELETE FROM chefs 
             WHERE id = :id";
@@ -89,6 +94,9 @@ class Chef {
 		$pst = $this->db->prepare($sqlUser);
 		$pst->bindParam(':userId', $userId);
 		$pst->execute();
+
+		
+		
 		return $count;
   }
 
