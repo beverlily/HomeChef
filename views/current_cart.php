@@ -15,7 +15,7 @@
 
    //if there are items in the cart, calculate the total
    if($orderItems){
-	  $orderTotal = $order->getOrderTotal($order_id);
+	  $orderTotal = "$".$order->getOrderTotal($order_id);
    }
 
    ?>
