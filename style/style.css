@@ -362,7 +362,7 @@ button a{
 }
 
 /*CHEF PROFILE PAGE*/
-#chef-pages{
+#chef-pages, .product-page{
   width: 1100px;
   margin: 0 auto;
   padding:10px;
@@ -477,10 +477,22 @@ button a{
 
 #cart form{
 	box-shadow: none;
-	margin: 0;
 	padding: 0;
+}
+
+#place-order-form{
+	margin: 0;
 }
 
 #cart label{
 	padding: 0;
+}
+
+.item-edit-delete form{
+	display: inline;
+	margin-right: 10px;
+}
+
+#order-item-list h3{
+	margin: 0;
 }
