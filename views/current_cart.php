@@ -54,7 +54,7 @@
 					  }
 					?>
 				<div>
-					 <span class='item-title'>Total Price: $<?=$totalprice?></span>
+					 <span class='item-title'>Total Price: $<?=$totalPrice?></span>
 				</div>
 				</ul>
 				<form method="POST" id="place-order-form">
