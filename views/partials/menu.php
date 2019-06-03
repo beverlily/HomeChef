@@ -1,12 +1,12 @@
 <?php
 
-$this_user=$user->getUser($_SESSION['USERID'],$db);
+// $this_user=$user->getUser($_SESSION['USERID'],$db);
 
-if($this_user->IsChef == 1){
-  $profile = 'chef_details';
-}else{
-  $profile = 'user_profile';
-}
+// if($this_user->IsChef == 1){
+//   $profile = 'chef_details';
+// }else{
+//   $profile = 'user_profile';
+// }
 
 
  ?>

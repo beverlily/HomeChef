@@ -2,9 +2,8 @@
 include 'views/partials/header.php';
 include 'views/partials/menu.php';
 $id = $_SESSION['USERID'];
-$chefid = $_SESSION['CHEFID'];
 
-$chefEdit = $chef->getChef($chefid);
+$chefEdit = $chef->getChef($id);
 ?>
 <main id="main">
 	<div class="banner-pages">
