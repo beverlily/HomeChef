@@ -17,7 +17,7 @@ $p = $product->getProduct($productid, $db);
 			<p> Price: $<?=$p->price?> </p>
 			<input type='hidden' name='id' value="<?=$p->id?>" />
 			<label for="quantity">Quantity</label>
-			<input id="quantity" type='number' name='quantity' min='1' max='10' value='1' />
+			<input id="quantity" type='number' name='quantity' min='1' value='1' />
 			<br />
 			<br />
 			<input type='submit' name='add-to-cart' value="Add to Cart"/>

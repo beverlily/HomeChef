@@ -8,8 +8,8 @@ class Order
 	}
 
 	public function createOrder($userId, $address){
-		$sql = 'INSERT INTO orders(user_id, address, total_price)
-			VALUES (:userId, :address, 0)';
+		$sql = 'INSERT INTO orders(user_id, address)
+			VALUES (:userId, :address)';
 
 		$pstmt = $this->db->prepare($sql);
 		$pstmt->bindParam(':userId', $userId);
@@ -72,17 +72,23 @@ class Order
 	}
 
 	//Updates order by Id
-	public function updateOrder($id){
+	public function sendOrder($order_id, $address, $comments){
 		$sql = 'UPDATE orders
-			SET name = :name,
-			current = :current,
-			goal = :goal
-			WHERE id = :id';
+			SET address = :address,
+			purchase_time = :purchase_time,
+			comments = :comments
+			WHERE id = :order_id';
 
 		$pstmt = $this->db->prepare($sql);
 
-		$pstmt->bindParam(':id', $id);
-		$pstmt->bindParam(':name', $name);
+		$timezone = date_default_timezone_set('US/Eastern');
+		$datetime = new DateTime();
+		$datetime = $datetime->format('Y-m-d H:i:s');
+
+		$pstmt->bindParam(':order_id', $order_id);
+		$pstmt->bindParam(':address', $address);
+		$pstmt->bindParam(':purchase_time', $datetime);
+		$pstmt->bindParam(':comments', $comments);
 
 		return $pstmt->execute();
 	}

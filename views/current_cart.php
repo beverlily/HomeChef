@@ -8,10 +8,9 @@
    $orderItem = new OrderItem();
    $orderItems = $orderItem->getOrderItems($order_id);
    $order = new Order();
+   $currentOrder = $order->getOrderById($_SESSION['ORDERID']);
    $total_price = $order->getOrderTotal($order_id);
-   var_dump($_POST);
-   $timezone = date_default_timezone_set('US/Eastern');
-   $date = date('Y-m-d H:i:s');
+   if(!$total_price) $total_price = 0;
    ?>
 <main>
    <div class="page-wrapper">
@@ -40,7 +39,15 @@
          </ul>
 		 <form method="POST">
 		   <input type="hidden" name="order_id" value="<?=$order_id?>" />
-		   <input type="hidden" name="date" value="<?=$date?>"/>
+		   <label for id="address">Address:</label>
+		   <input type="text" name="address" value="<?=$currentOrder->address?>"/>
+		   <br />
+		   <br />
+		   <label for id="address">Comments:</label>
+		   <br />
+		   <textarea name="comments"></textarea>
+		   <br />
+		   <br />
 		   <input type='submit' name="place_order" value="Place Order"/>
 		 </form>
       </div>
