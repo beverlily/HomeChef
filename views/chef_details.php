@@ -4,8 +4,6 @@ include 'views/partials/menu.php';
 
 //if(isset($_SESSION['USERID']) ? $id = $_SESSION['USERID'] : "");
 
-//$chefid = $_SESSION['CHEFID'];
-
 $chefDetails = $chef->getChef($_SESSION['USERID']);
 //var_dump($chefDetails);
 
@@ -22,16 +20,17 @@ $products = $product->getProducts($chefDetails['id'], $db);
 		</div>
 		<div>
 			<h1><?php echo $chefDetails['first_name'] . ' ' . $chefDetails['last_name'] ?></h1>
-			<!-- <p>Bio: <?php echo $chefDetails['bio'] ?></p> -->
+			<p><?php echo $chefDetails['bio'] ?></p>
 			<p>Address: <?php echo $chefDetails['address'] ?></p>
 			<p>Delivery Radius: <?php echo $chefDetails['address_radius'] ?> km</p>
 		</div>
+		<div>
 		<?php if(isset($_SESSION['USERID']) && $_SESSION['USERID'] == $chefDetails['user_id']) {
-		echo '<div>
-					<a type="submit" href="chef_update" name="update" class="chef-link">Edit Chef Profile</a><span> | </span><a type="submit" href="chef_delete" name="delete" class="chef-link">Delete Chef Profile</a>
-					</div>';
+	
+			echo	'<a type="submit" href="chef_update" name="update" class="chef-link">Edit Chef Profile</a><span> | </span><a type="submit" href="chef_delete" name="delete" class="chef-link">Delete Chef Profile</a>';				
 		}
 		?>
+		</div>
 		<div>
 			<!--Need to Add styling here to display products -->
 			<h2>Products</h2>

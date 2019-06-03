@@ -5,6 +5,7 @@ $id = $_SESSION['USERID'];
 
 $chefDetails = $chef->getChef($id);
  //$id = $chefDetails['id'];
+ 
 ?>
 	<main id="main">
     <div id="chef-pages">

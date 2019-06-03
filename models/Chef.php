@@ -1,7 +1,7 @@
 <?php
 class Chef {
   private $db;
-  /* Constructor function for Request
+  /* Constructor function for Chef
            Parameters: $db the PDO for the database */
 	public function __construct($db) {
     $this->db = $db;
@@ -35,7 +35,18 @@ class Chef {
 		$pst->execute();
 		return $count;
 
-  }
+	}
+	public function getChefInfo($id){
+		$sql = "SELECT * FROM chefs WHERE id = :chefId";
+
+      $pst = $this->db->prepare($sql);
+      $pst->bindParam(':chefId', $id);
+      $pst->execute();
+
+      $c = $pst->fetch();
+
+      return $c;
+	}
 
 
   /*Method that allows to edit the chef info
