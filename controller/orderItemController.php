@@ -33,7 +33,9 @@ if(isset($_POST['update_order_item'])){
 }
 
 if(isset($_POST['delete_order_item'])){
-	$deleteCount = $m->deleteOrderItem($id);
+	$product_id = $_POST['product_id'];
+	$order_id = $_POST['order_id'];
+	$deleteCount = $orderItem->deleteOrderItem($order_id, $product_id);
 	 if($deleteCount){
 		   echo "<p class='success'> Deleted order item successfully.</p>";
 	   } else {
