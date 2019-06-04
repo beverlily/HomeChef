@@ -10,9 +10,10 @@ if(isset($_POST['place_order'])){
 	$order_address = $_POST['address'];
 	$comments = $_POST['comments'];
 	$current_address = $currentUser->address;
+	$total_price = $_POST['total_price'];
 
 	//updates the order with purchase time, order address, and comments
-	$sendOrder = $order->sendOrder($order_id, $order_address, $comments);
+	$sendOrder = $order->sendOrder($order_id, $order_address, $total_price, $comments);
 
 	//starts a new order (empties cart)
 	$orderId = $order->createOrder($user_id, $current_address);

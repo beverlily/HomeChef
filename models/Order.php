@@ -72,10 +72,11 @@ class Order
 	}
 
 	//Updates order by Id
-	public function sendOrder($order_id, $address, $comments){
+	public function sendOrder($order_id, $address, $total_price, $comments){
 		$sql = 'UPDATE orders
 			SET address = :address,
 			purchase_time = :purchase_time,
+			total_price = :total_price,
 			comments = :comments
 			WHERE id = :order_id';
 
@@ -88,6 +89,7 @@ class Order
 		$pstmt->bindParam(':order_id', $order_id);
 		$pstmt->bindParam(':address', $address);
 		$pstmt->bindParam(':purchase_time', $datetime);
+		$pstmt->bindParam(':total_price', $total_price);
 		$pstmt->bindParam(':comments', $comments);
 
 		return $pstmt->execute();
