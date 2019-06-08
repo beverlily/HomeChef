@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?= $_SESSION['USERID'] ?>
+<!--<?= $_SESSION['USERID'] ?>-->
 <html>
 	<head>
 		<title>Home Chef</title>
@@ -31,7 +31,7 @@
 				<div id="home-banner-text" class="banner-text">
 					Who's cooking your
 					dinner tonight?
-					<a href="#" class="button">Sign Up</a>
+					<a href="#" class="button"><span>Sign Up</span></a>
 				</div>
 			</div>
 		</div>

@@ -30,7 +30,7 @@
 				<div id="home-banner-text" class="banner-text">
 					Who's cooking your
 					dinner tonight?
-					<a href="#" class="button">Sign Up</a>
+					<a href="#" class="button"><span>Sign up</span></a>
 				</div>
 			</div>
 		</div>
