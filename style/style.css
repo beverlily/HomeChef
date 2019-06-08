@@ -103,7 +103,6 @@ li{
 }
 
 #about .button{
-	color: #eae2d8;
 	background-color: #344458;
 }
 #home-banner{
@@ -120,20 +119,21 @@ li{
 	padding: 25px 50px;
 	font-weight: bold;
   font-family: 'Josefin Sans', sans-serif;
-
+  padding-top: 54px;
 }
 
 #home-banner .button{
 	font-size: 1.5rem;
-	color: #eae2d8;
 	background: #ea6f5f;
 	margin: 0;
 	margin-top: 50px;
+  padding-top: 15px; /*to fix line height*/
 }
 
 .banner-text{
 	margin: 0;
 }
+
 /*2. GENERAL CLASSES*/
 .page-wrapper{
   max-width: 1200px;
@@ -157,6 +157,7 @@ li{
   text-transform: uppercase;
   font-weight: bold;
   margin: 20px;
+  color: white;
 }
 
 #header .button{
@@ -166,6 +167,7 @@ li{
 .button:hover{
   cursor: pointer;
 }
+
 .banner-pages{
   background-color:#449C93;
   color:#E5D9CD;
@@ -185,6 +187,7 @@ li{
 
 #header, #footer{
 	background-color: #344458;
+  padding: 0 25px;
 }
 
  #home-banner-text{
@@ -194,10 +197,6 @@ li{
 
 #header{
   border-bottom: 1px solid #383838;
-}
-
-#header .page-wrapper{
-  margin: 0;
 }
 
 #header-content{
@@ -211,11 +210,8 @@ li{
 }
 
 #header-nav a{
-  margin-left: 20px;
-  color: #383838;
+  color: white;
 }
-
-
 
 .alt{
   color:white !important;
@@ -235,7 +231,6 @@ li{
   display: inline-block;
   vertical-align: middle;
   max-width: 100px;
-  margin-left: 50px;
   flex: 1;
 }
 
@@ -327,6 +322,7 @@ form button, #user-profile button, #chef-pages button{
 form button:hover, #user-profile button:hover, #chef-pages button:hover{
   background-color:#E1584B;
 }
+
 button a{
   color:white;
 }
@@ -460,7 +456,7 @@ button a{
 #cart h2{
 	text-transform: uppercase;
 	font-weight: bold;
-	width 100%;
+	width: 100%;
 	border-bottom: 2px solid #4daba4;
 }
 
