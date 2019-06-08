@@ -457,7 +457,7 @@ button a{
 #cart h2{
 	text-transform: uppercase;
 	font-weight: bold;
-	width 100%;
+	width: 100%;
 	border-bottom: 2px solid #4daba4;
 }
 
