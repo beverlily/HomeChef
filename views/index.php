@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<!-- <?= $_SESSION['USERID'] ?> -->
-=======
 <!--<?= $_SESSION['USERID'] ?>-->
->>>>>>> a1693791181e75e42a6657e6e35eb905d853c330
 <html>
 	<head>
 		<title>Home Chef</title>
