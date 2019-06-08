@@ -2,6 +2,7 @@
 $order = new Order();
 $orderItem = new OrderItem();
 $user = new User();
+//if(isset($_SESSION['USERID']) ? $user_id = $_SESSION['USERID'] : "");
 $user_id = $_SESSION['USERID'];
 $currentUser = $user->getUser($user_id, Database::getDb());
 
