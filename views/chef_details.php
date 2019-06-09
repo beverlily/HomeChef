@@ -2,11 +2,14 @@
 include 'views/partials/header.php';
 include 'views/partials/menu.php';
 
-//if(isset($_SESSION['USERID']) ? $id = $_SESSION['USERID'] : "");
 
+if(isset($_POST['view-chef'])){
+	$chefDetails = $chef->getChef($_POST['user_id']);
+}
+else{
 $chefDetails = $chef->getChef($_SESSION['USERID']);
 //var_dump($chefDetails);
-
+}
 $products = $product->getProducts($chefDetails['id'], $db);
 // var_dump($products);
 ?>

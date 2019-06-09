@@ -120,11 +120,11 @@ class Chef {
 		 }
 
 		 public function getAllChefs() {  //join with users table
-      $sql = "SELECT users.id, first_name, last_name, address, chefs.id, bio, image, address_radius
+      $sql = "SELECT users.id, first_name, last_name, address, chefs.id, user_id, bio, image, address_radius
 							FROM users
 							INNER JOIN chefs
 							ON users.id = chefs.user_id
-							WHERE users.IsChef = 1";
+							WHERE users.IsChef = 1 ";
 
       $pst = $this->db->prepare($sql);
       $pst->execute();
