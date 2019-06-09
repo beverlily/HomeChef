@@ -1,13 +1,14 @@
 <?php
 include 'views/partials/header.php';
 include 'views/partials/menu.php';
+
 $id = $_SESSION['USERID'];
-$product_id = $_POST['product_id'];
-$order_id = $_SESSION['ORDERID'];
+$productId = $_POST['product_id'];
+$orderId = $_SESSION['ORDERID'];
 
 $o = new OrderItem();
+$orderItem = $o->getOrderItem($orderId, $productId);
 
-$orderItem = $o->getOrderItem($order_id, $product_id);
 ?>
 
 <main id="main">
@@ -20,8 +21,8 @@ $orderItem = $o->getOrderItem($order_id, $product_id);
 			<h3><?=$orderItem->title?></h3>
 			<p><?=$orderItem->description?></p>
 			<p> Price per meal: $<?=$orderItem->price?> </p>
-			<input type='hidden' name='product_id' value="<?=$product_id?>" />
-			<input type='hidden' name='order_id' value="<?=$order_id?>" />
+			<input type='hidden' name='productId' value="<?=$product_id?>" />
+			<input type='hidden' name='orderId' value="<?=$order_id?>" />
 			<label for="quantity">Quantity</label>
 			<input id="quantity" type='number' name='quantity' min='1' value='<?=$orderItem->quantity?>' />
 			<br />

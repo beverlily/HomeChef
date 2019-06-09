@@ -3,7 +3,7 @@ class OrderItem
 {
 	//products_orders
 	private $db;
-    private $quantity;
+
 	public function __construct(){
 		$this->db = Database::getDb();
 	}
@@ -16,7 +16,7 @@ class OrderItem
 
 		$pstmt = $this->db->prepare($sql);
 		$pstmt->bindParam(':order_id', $order_id);
-	    $pstmt->bindParam(':product_id', $product_id);
+	  $pstmt->bindParam(':product_id', $product_id);
 
 		$pstmt->execute();
 		$products = $pstmt->fetchAll(PDO::FETCH_OBJ);

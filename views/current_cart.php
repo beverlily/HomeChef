@@ -47,13 +47,11 @@
                       <br />
                       <div class='item-edit-delete'>
                          <form method='POST' action='edit_cart_item'>
-                            <input type='hidden' name='order_id' value='$orderId' />
-                            <input type='hidden' name='product_id' value='$item->id' />
+                            <input type='hidden' name='product_id' value='<?=$item->id?>' />
                             <input type='submit' name='edit_order_item' value='Edit Item'>
                          </form>
                          <form method='POST'>
-                            <input type='hidden' name='order_id' value='$orderId' />
-                            <input type='hidden' name='product_id' value='$item->id' />
+                            <input type='hidden' name='product_id' value='<?$item->id?>' />
                             <input type='submit' name='delete_order_item' value='Remove From Cart'>
                          </form>
                       </div>
