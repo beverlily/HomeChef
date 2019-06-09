@@ -1,15 +1,10 @@
 <?php
-
-// $this_user=$user->getUser($_SESSION['USERID'],$db);
-
-// if($this_user->IsChef == 1){
-//   $profile = 'chef_details';
-// }else{
-//   $profile = 'user_profile';
-// }
-
-
- ?>
+//if there is a logged in user, checks if they're a chef or a user
+if(isset($_SESSION['USERID'])){
+  $this_user=$user->getUser($_SESSION['USERID'],$db);
+  $profile = $this_user->IsChef == 1 ? 'chef_details' : 'user_profile';
+}
+?>
 
 <a id="skip-to-main" class="hidden" href="#main" tabindex="0">Skip to main content</a>
 <header id="header">
