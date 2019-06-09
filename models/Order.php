@@ -23,7 +23,8 @@ class Order
 
 	//Gets all orders of a user
 	public function getAllOrders($userId){
-		$sql = 'SELECT orders.id, orders.time, orders.address, orders.total_price, users.first_name, users.last_name FROM orders
+		$sql = 'SELECT orders.id, orders.purchase_time, orders.address, orders.total_price, users.first_name AS chef_firstName, users.last_name AS chef_lastName
+			  FROM orders
 		 		JOIN chefs
 				ON orders.chef_id = chefs.id
 				JOIN users
@@ -68,14 +69,16 @@ class Order
 		$pstmt->execute();
 
 		$orderTotal = $pstmt->fetchColumn();
-		return $orderTotal;
+		return number_format($orderTotal,2);
 	}
 
 	//Updates order by Id
-	public function sendOrder($order_id, $address, $total_price, $comments){
+	public function sendOrder($order_id, $chef_id, $address, $total_price, $comments){
 		$sql = 'UPDATE orders
-			SET address = :address,
+			SET
+			address = :address,
 			purchase_time = :purchase_time,
+			chef_id = :chef_id,
 			total_price = :total_price,
 			comments = :comments
 			WHERE id = :order_id';
@@ -89,6 +92,7 @@ class Order
 		$pstmt->bindParam(':order_id', $order_id);
 		$pstmt->bindParam(':address', $address);
 		$pstmt->bindParam(':purchase_time', $datetime);
+		$pstmt->bindParam(':chef_id', $chef_id);
 		$pstmt->bindParam(':total_price', $total_price);
 		$pstmt->bindParam(':comments', $comments);
 

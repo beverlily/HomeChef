@@ -211,6 +211,7 @@ li{
 
 #header-nav a{
   color: white;
+  margin-left: 20px;
 }
 
 .alt{
@@ -437,7 +438,7 @@ button a{
 }
 
 
-/*ORDER PAGES*/
+/*ORDER HISTORY AND ORDER CART PAGES*/
 .order-item{
   margin-right: 20px;
   width: 75px;
@@ -446,14 +447,14 @@ button a{
   border-radius: 50%;
 }
 
-#cart{
+#cart, #orders{
 	background-color: white;
 	border: 1px solid lightgrey;
-    padding: 50px;
+  padding: 50px;
 	margin: 50px;
 }
 
-#cart h2{
+#cart h2, #orders h2{
 	text-transform: uppercase;
 	font-weight: bold;
 	width: 100%;
@@ -491,4 +492,18 @@ button a{
 
 #order-item-list h3{
 	margin: 0;
+}
+
+#order-list li{
+  width: 100%;
+}
+
+.order{
+  padding: 30px;
+  border: 2px solid lightgray;
+  margin-bottom: 20px;
+}
+
+label{
+  font-weight: bold;
 }
