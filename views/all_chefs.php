@@ -21,7 +21,6 @@ $chefs = $chef->getAllChefs();
           <form class="hidden-form" action="chef_details" method="POST">
             <input type='hidden' name='user_id' value='<?=$c->user_id?>'/>
             <input type='hidden' name='chef_id' value='<?=$c->id?>'/>
-            <?= var_dump($c->id); ?>
             <input type='submit' name='view-chef' class="view-product" value='More Details' />
           </form>
       </div>
