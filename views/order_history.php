@@ -1,13 +1,12 @@
 <?php
    include 'views/partials/header.php';
    include 'views/partials/menu.php';
-   // session_start();
+
    //if user isn't logged in, redirects them to the log in page
    isset($_SESSION['USERID']) ? $userId = $_SESSION['USERID'] :  header('Location: ../sign_in');
    $o = new Order();
    $orders = $o->getAllOrders($userId);
    $orderItem = new OrderItem();
-   echo $userId;
    ?>
 <main>
    <div class="page-wrapper">
