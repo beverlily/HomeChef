@@ -7,13 +7,14 @@ $currentUser = $user->getUser($user_id, Database::getDb());
 
 if(isset($_POST['place_order'])){
 	$order_id = $_POST['order_id'];
+	$chef_id = $_POST['chef_id'];
 	$order_address = $_POST['address'];
 	$comments = $_POST['comments'];
 	$current_address = $currentUser->address;
 	$total_price = $_POST['total_price'];
 
 	//updates the order with purchase time, order address, and comments
-	$sendOrder = $order->sendOrder($order_id, $order_address, $total_price, $comments);
+	$sendOrder = $order->sendOrder($order_id,  $chef_id, $order_address, number_format($total_price,2), $comments);
 
 	//starts a new order (empties cart)
 	$orderId = $order->createOrder($user_id, $current_address);

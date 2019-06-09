@@ -1,7 +1,7 @@
 <?php
    include 'views/partials/header.php';
    include 'views/partials/menu.php';
-   session_start();
+   // session_start();
    //if user isn't logged in, redirects them to the log in page
    isset($_SESSION['USERID']) ? $userId = $_SESSION['USERID'] :  header('Location: ../sign_in');
 
@@ -16,7 +16,10 @@
    //if there are items in the cart, calculate the total
    if($orderItems){
 	  $totalPrice = $order->getOrderTotal($orderId);
+    $totalPriceAfterTax = number_format($totalPrice*1.13,2);
    }
+
+   $chef_id="";
 
    ?>
 <main>
@@ -29,12 +32,14 @@
 				<ul id="order-item-list">
 				   <?php foreach($orderItems as $item){
 					  $price = $item->quantity*$item->price;
+            $chef_id = $item->chef_id;
+
 					  echo
 					  "<li class='flex-container'>
 						  <img src='images/$item->image' alt='$item->title' class='order-item' />
 						 <div>
 							   <h3 class='item-title'>$item->title</h3>
-							   <div class='item-title'>Quantity: $item->quantity</div>
+							   <div>Quantity: $item->quantity</div>
 							 <div>$$price</div>
 							 <br />
 							 <div class='item-edit-delete'>
@@ -53,18 +58,24 @@
 					  </li>";
 					  }
 					?>
-				<div>
-					 <span class='item-title'>Total Price: $<?=$totalPrice?></span>
+				<div id="order-total">
+					 <span class='item-title'>Subtotal: </span> $<?=$totalPrice?>
+           <br />
+           <span class='item-title'>Tax </span> $<?=number_format($totalPrice*0.13,2)?>
+           <br />
+           <span class='item-title'>Total: </span> $<?=$totalPriceAfterTax?>
 				</div>
+        <br />
 				</ul>
 				<form method="POST" id="place-order-form">
 				  <input type="hidden" name="order_id" value="<?=$orderId?>" />
-				  <input type="hidden" name="total_price" value="<?=$totalPrice?>" />
+          <input type="hidden" name="chef_id" value="<?=$chef_id?>" />
+				  <input type="hidden" name="total_price" value="<?=$totalPriceAfterTax?>" />
 				  <label for id="address">Delivery Address:</label>
 				  <input type="text" name="address" value="<?=$currentOrder->address?>"/>
 				  <br />
 				  <br />
-				  <label for id="address">Comments:</label>
+				  <label for id="comments">Comments:</label>
 				  <br />
 				  <textarea name="comments"></textarea>
 				  <br />

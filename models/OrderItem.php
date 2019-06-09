@@ -49,7 +49,7 @@ class OrderItem
 
 	//All order items belonging to an order
 	public function getOrderItems($order_id){
-		$sql = 'SELECT products.id, products.image, products.title, products_orders.quantity, products.price
+		$sql = 'SELECT products.id, products.chef_id, products.image, products.title, products_orders.quantity, products.price
 		FROM products_orders
 		JOIN products
 		ON products_orders.product_id = products.id

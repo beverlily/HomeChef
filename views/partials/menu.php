@@ -23,7 +23,8 @@
        <ul>
         <li><a class= "alt" href="<?=$profile?>">Profile</a></li>
         <li><a class= "alt" href="all_products">Browse</a></li>
-	    <li><a class= "alt" href="current_cart">View Cart</a></li>
+        <li><a class= "alt" href="order_history">Orders</a></li>
+	      <li><a class= "alt" href="current_cart">View Cart</a></li>
         <li><a class= "alt" href="destroy_session">Logout</a></li>
        </ul>
       </nav>
