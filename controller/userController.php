@@ -87,10 +87,3 @@ if(isset($_POST['edit_user'])){
       echo "Error adding user";
     }
   }
-
-
-
-
-
-
- ?>

@@ -7,7 +7,8 @@
    $o = new Order();
    $orders = $o->getAllOrders($userId);
    $orderItem = new OrderItem();
-   ?>
+?>
+
 <main>
    <div class="page-wrapper">
       <div id="orders">
@@ -26,24 +27,22 @@
                 <ul id="order-item-list">
                  <?php
                  $orderItems = $orderItem->getOrderItems($order->id);
-
-                 foreach($orderItems as $item){
-        					  $price = $item->quantity*$item->price;
-                    $chef_id = $item->chef_id;
-
-        					  echo
-        					  "<li class='flex-container'>
-        						  <img src='images/$item->image' alt='$item->title' class='order-item' />
+                   foreach($orderItems as $item):
+          					  $price = $item->quantity*$item->price;
+                      $chef_id = $item->chef_id;
+                  ?>
+        					  <li class="flex-container">
+        						  <img src="images/<?=$item->image?>" alt="<?=$item->title?>" class="order-item" />
         						 <div>
-        							   <h3 class='item-title'>$item->title</h3>
-        							   <div>Quantity: $item->quantity</div>
-        							 <div>$$price</div>
+        							   <h3 class='item-title'><?=$item->title?></h3>
+        							   <div>Quantity: <?=$item->quantity?></div>
+        							 <div>$<?=$price?></div>
         							 <br />
         							 </div>
-        					  </li>";
-      					  }
-                  $totalPrice = number_format($order->total_price,2);
-                  echo "<span class='item-title'>Order total: $$totalPrice</span>";?>
+        					  </li>
+      					  <?php endforeach;
+                  $totalPrice = number_format($order->total_price,2); ?>
+                  <span class="item-title">Order total: $<?=$totalPrice?></span>
                 </ul>
               </li>
             <?php endforeach;?>
