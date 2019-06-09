@@ -5,12 +5,22 @@ include 'views/partials/menu.php';
 
 $products = $product->getAllProducts($db);
 
+$addCartSuccessMessage = "";
+//Checks for success message for adding item to cart
+if(isset($_SESSION['addCartSuccessMessage'])){
+  $addCartSuccessMessage = $_SESSION['addCartSuccessMessage'];
+  //resets success message
+  $_SESSION['addCartSuccessMessage'] = "";
+}
 ?>
 
 <main id="main">
   <div class="banner-pages">
     <h2> All Available Meals! </h2>
   </div>
+  <?php if($addCartSuccessMessage!=""):?>
+     <div class="success"><?=$addCartSuccessMessage?></div>
+  <?php endif;?>
 <div id="chef-pages">
   <div id="product-content" class="flex-container">
   <?php foreach($products as $p):?>
@@ -22,7 +32,6 @@ $products = $product->getAllProducts($db);
             <input type='hidden' name='product_id' value='<?=$p->id?>'/>
             <input type='submit' name='view-product' class="view-product" value='More Details' />
           </form>
-          <!-- <p><a href="product_details"> View product details </a></p> -->
       </div>
     </div>
     <?php endforeach; ?>

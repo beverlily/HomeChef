@@ -73,11 +73,12 @@ if(isset($_POST["add-to-cart"])){
 	$product_id = $_POST['id'];
 	$order_id = $_SESSION['ORDERID'];
 	$quantity = $_POST['quantity'];
-	// var_dump($_SESSION);
-	// var_dump($_POST);
-	$orderItem->addOrderItem($order_id, $product_id, $quantity);
-	header('Location:all_products');
+	$count = $orderItem->addOrderItem($order_id, $product_id, $quantity);
+  if(!$count){
+    $_SESSION['addCartErrorMessage'] = "Something went wrong";
+  }
+  else{
+    $_SESSION['addCartSuccessMessage'] = "Item has been added to cart ";
+    header('Location:all_products');
+  }
 }
-
-
- ?>

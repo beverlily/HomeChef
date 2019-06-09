@@ -5,19 +5,15 @@
  * 2. GENERAL CLASSES
  * 3. GENERAL STYLING
  * 4. HEADER
- * 5. GAME CONTAINER
- * 6. GAME START
- * 7. GAME OVER
- * 8. GAME INSTRUCTIONS
- * 9. FOOTER
- * 10. ANIMATIONS
- * 11. MEDIA QUERIES
+ * 5. FOOTER
  * 12. SKIP TO MAIN
  * 13. FORMS *
  * 14. USER PROFILE PAGE*
  *15. CHEF PROFILE PAGE
  *16. PRODUCT PAGES
  *17. ORDER PAGES
+
+  * 6. MEDIA QUERIES
  ***********************************************/
 
 /*1. DEFAULT OVERRIDES*/
@@ -158,6 +154,22 @@ li{
   font-weight: bold;
   margin: 20px;
   color: white;
+}
+
+.error, .success{
+  padding: 10px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.error{
+  color: red;
+  background-color: #FFEEEE;
+}
+
+.success{
+  color: #48a948;
+  background-color: #F4FEF4;
 }
 
 #header .button{
@@ -362,7 +374,7 @@ button a{
 #chef-pages, .product-page{
   width: 1100px;
   margin: 0 auto;
-  padding:10px;
+  padding: 30px;
   background-color: #fff;/*#E5D9CD;*/
   color:#449C93;
   text-align: center;
@@ -472,7 +484,7 @@ button a{
 	font-weight: bold;
 }
 
-#cart form{
+#cart form, #add-to-cart{
 	box-shadow: none;
 	padding: 0;
 }
