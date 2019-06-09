@@ -2,11 +2,11 @@
 include 'views/partials/header.php';
 include 'views/partials/menu.php';
 $id = $_SESSION['USERID'];
-$product_id = $_SESSION['PRODUCTID'];
+$productId = $_SESSION['PRODUCTID'];
 
 $chef = new Chef(Database::getDb());
 $thisChef = $chef->getChefId($id);
-$p = $product->getProduct($product_id, $db);
+$p = $product->getProduct($productId, $db);
 
 $addCartErrorMessage = "";
 //Checks for adding to cart error message
