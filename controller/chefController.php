@@ -144,11 +144,4 @@ $chef = new Chef(Database::getDb());
 
     
   }
-  
-
-  $count = $chef->getAllChefs();
-  if(isset($_POST['view-chef'])){
-    $_SESSION['CHEFID'] = $_POST['chef_id'];
-    header('Location:chef_details');
-  }
 ?>

@@ -7,6 +7,7 @@ include 'views/partials/menu.php';
 		<h2>Become a Chef</h2>
 	</div>
 	<form method="POST" enctype="multipart/form-data">
+	<input type="hidden" name="id">
 		<div class="form-row">
 			<label for="chef_bio">Bio:</label>
 			<textarea type="text" placeholder="Short Bio" name="chef_bio" id="chef_bio" ></textarea>
@@ -16,7 +17,7 @@ include 'views/partials/menu.php';
 			<input type="file" name="chef_image" id="chef_image">
 		</div>
 		<div class="form-row">
-			<label for="radius">Address radius:</label>
+			<label for="radius">Delivery radius in km:</label>
 			<input type="number" min="1" max="30" value="1" name="radius" id="radius">
 		</div>
 		<div>

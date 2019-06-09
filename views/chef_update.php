@@ -4,9 +4,6 @@ include 'views/partials/menu.php';
 $id = $_SESSION['USERID'];
 
 $chefEdit = $chef->getChef($id);
-// if(isset($_POST['id'])) {
-// 	$chefEdit = $chef->getChefInfo($_POST['id']);
-
 ?>
 <main id="main">
 	<div class="banner-pages">
@@ -25,7 +22,7 @@ $chefEdit = $chef->getChef($id);
 			<input type="file" name="chef_image" id="chef_image" value="<?php echo $chefEdit['image']; ?>">
 		</div>
 		<div class="form-row">
-			<label for="radius">Address radius:</label>
+			<label for="radius">Delivery radius in km:</label>
 			<input type="number" min="1" max="30"  name="radius" id="radius" value="<?php echo $chefEdit['address_radius']; ?>">
 		</div>
 		<div>
