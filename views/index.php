@@ -1,31 +1,9 @@
-<!DOCTYPE html>
-<!--<?= $_SESSION['USERID'] ?>-->
-<html>
-	<head>
-		<title>Home Chef</title>
-		<meta charset="utf-8" />
-		<link rel="stylesheet" type="text/css" href="style/style.css" />
-		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:700&display=swap" rel="stylesheet">
-		<meta name="viewport" content="width=device-width">
-	</head>
+<?php
+	include 'views/partials/header.php';
+	include 'views/partials/menu.php';
+?>
 	<body>
-	    <a id="skip-to-main" class="hidden" href="#main" tabindex="0">Skip to main content</a>
-	   	<header id="header">
-	   	   <div class="page-wrapper">
-			  <div id="header-content" class="flex-container">
-				  <div id="site-logo">
-					   <a href=""><img src="images/logo.png" alt="Home Chef Logo" /></a>
-				  </div>
-		   		  <nav id="header-nav">
-		   			 <h2 class="hidden">Main Navigation</h2>
-		   			 <ul>
-		   				<li><a href="register_user" class="button">Sign Up</a></li>
-		   			  <li><a href="sign_in" class="button">Log In</a></li>
-		   			 </ul>
-		   		  </nav>
-			  </div>
-	   	   </div>
-	   	</header>
+	  <a id="skip-to-main" class="hidden" href="#main" tabindex="0">Skip to main content</a>
 		<div id="home-banner">
 			<div class="page-wrapper">
 				<div id="home-banner-text" class="banner-text">
@@ -104,25 +82,4 @@
 			   	  </div>
 				</div>
 		</main>
-	   	<footer id="footer" class="flex-container" tabindex="0">
-			<div class="page-wrapper">
-				<h2 class="hidden">Main Footer</h2>
-				<ul>
-				 <li>
-					 <a href="#">About Us</a>
-					 <a href="#">FAQ</a>
-					 <a href="#">Contact Us</a>
-					 <a href="#">Privacy Policy</a>
-					 <a href="#">Become a Chef!</a>
-				 </li>
-				</ul>
-				<p id="copyright">
-					Home Chef &copy; 2019
-				</p>
-			</div>
-	   	</footer>
-	   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-	   	<script src="script.js"></script>
-    </body>
-</html>
+		 <?php  include 'views/partials/footer.php';

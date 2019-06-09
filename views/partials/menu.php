@@ -21,11 +21,18 @@
       <nav id="header-nav">
        <h2 class="hidden">Main Navigation</h2>
        <ul>
-        <li><a class= "alt" href="<?=$profile?>">Profile</a></li>
-        <li><a class= "alt" href="all_products">Browse</a></li>
-        <li><a class= "alt" href="order_history">Orders</a></li>
-	      <li><a class= "alt" href="current_cart">View Cart</a></li>
-        <li><a class= "alt" href="destroy_session">Logout</a></li>
+         <!-- if user is logged in -->
+        <?php if(isset($_SESSION['USERID'])): ?>
+          <li><a class= "alt" href="<?=$profile?>">Profile</a></li>
+          <li><a class= "alt" href="all_products">Browse</a></li>
+          <li><a class= "alt" href="order_history">Orders</a></li>
+  	      <li><a class= "alt" href="current_cart">View Cart</a></li>
+          <li><a class= "alt" href="destroy_session">Logout</a></li>
+         <!-- if user is not logged in -->
+        <?php else: ?>
+          <li><a href="register_user" class="button">Sign Up</a></li>
+          <li><a href="sign_in" class="button">Log In</a></li>
+        <?php endif;?>
        </ul>
       </nav>
   </div>
