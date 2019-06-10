@@ -10,7 +10,7 @@ $thisChef = $chef->getChefId($id);
 $p = $product->getProduct($productId, $db);
 
 $n = $product->getChefName($productId,$db);
-var_dump($n);
+// var_dump($n);
 $addCartErrorMessage = "";
 //Checks for adding to cart error message
 if(isset($_SESSION['addCartErrorMessage'])){
