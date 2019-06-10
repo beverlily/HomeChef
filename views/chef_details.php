@@ -5,7 +5,7 @@ include 'views/partials/menu.php';
 
 if(isset($_POST['view-chef'])){
 	$chefDetails = $chef->getChef($_POST['user_id']);
-}
+	}
 else{
 $chefDetails = $chef->getChef($_SESSION['USERID']);
 //var_dump($chefDetails);
@@ -29,8 +29,8 @@ $products = $product->getProducts($chefDetails['id'], $db);
 		</div>
 		<div>
 		<?php if(isset($_SESSION['USERID']) && $_SESSION['USERID'] == $chefDetails['user_id']) {
-	
-			echo	'<a type="submit" href="chef_update" name="update" class="chef-link">Edit Chef Profile</a><span> | </span><a type="submit" href="chef_delete" name="delete" class="chef-link">Delete Chef Profile</a>';				
+
+			echo	'<a type="submit" href="chef_update" name="update" class="chef-link">Edit Chef Profile</a><span> | </span><a type="submit" href="chef_delete" name="delete" class="chef-link">Delete Chef Profile</a>';
 		}
 		?>
 		</div>

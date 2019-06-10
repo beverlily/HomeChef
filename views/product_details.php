@@ -6,7 +6,9 @@ $product_id = $_SESSION['PRODUCTID'];
 
 $chef = new Chef(Database::getDb());
 $thisChef = $chef->getChefId($id);
+
 $p = $product->getProduct($product_id, $db);
+$n = $product->getChefName($product_id,$db);
 
 $addCartErrorMessage = "";
 //Checks for adding to cart error message
@@ -25,6 +27,7 @@ if(isset($_SESSION['addCartErrorMessage'])){
 	    <img class="product-image" src="images/<?=$p->image?>" alt="A picture of a product">
 		<h3><?=$p->title?></h3>
 		<p><?=$p->description?></p>
+    <p>Made by: <?=$n->first_name.' '. $n->last_name ?></p>
 		<p> Price per meal: $<?=$p->price?> </p>
 		<!--Only shows add to cart option if chef does not own the product-->
 		<?php if($thisChef['chefId'] != $p->chef_id):?>
@@ -40,6 +43,8 @@ if(isset($_SESSION['addCartErrorMessage'])){
     <?php if($addCartErrorMessage!=""):?>
        <div class="error"><?=$addCartErrorMessage?></div>
     <?php endif;?>
+    <a class="view-product" href="all_products"> Browse all meals </a>
+
 		</div>
 	</div>
 </main>

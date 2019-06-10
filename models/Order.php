@@ -35,6 +35,21 @@ class Order
 		$pstmt->execute();
 		return $pstmt->fetchAll(PDO::FETCH_OBJ);
 	}
+	public function getLastOrder($userId){
+		$sql = 'SELECT orders.id, orders.purchase_time, orders.address, orders.total_price, users.first_name AS chef_firstName, users.last_name AS chef_lastName
+				FROM orders
+				JOIN chefs
+				ON orders.chef_id = chefs.id
+				JOIN users
+				ON chefs.user_id = users.id
+				WHERE orders.user_id = :userId
+				ORDER BY orders.id DESC
+				LIMIT 1';
+		$pstmt = $this->db->prepare($sql);
+		$pstmt->bindParam(':userId', $userId);
+		$pstmt->execute();
+		return $pstmt->fetch(PDO::FETCH_OBJ);
+	}
 
 	public function getCurrentOrder($user_id){
 		$sql = 'SELECT MAX(id)

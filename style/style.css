@@ -56,9 +56,9 @@ li{
   display: inline-block;
 }
 
-#main{
+/* #main{
   margin:10px;
-}
+} */
 
 /*STEPS*/
 #steps{
@@ -448,6 +448,8 @@ button a{
   display: block;
   text-align: center;
 }
+
+
 
 
 /*ORDER HISTORY AND ORDER CART PAGES*/

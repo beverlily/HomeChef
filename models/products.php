@@ -45,6 +45,19 @@ class Product
     return $p;
   }
 
+  public function getChefName($id,$db)
+  {
+    $sql = "SELECT users.first_name, users.last_name FROM products
+    join chefs ON products.chef_id = chefs.id join users ON chefs.user_id = users.id
+    WHERE
+    products.id = :id";
+    $pst = $db->prepare($sql);
+    $pst->bindParam(':id', $id);
+    $pst->execute();
+    $p = $pst->fetch(PDO::FETCH_OBJ);
+    return $p;
+  }
+
   public function getAllProducts($db)
   {
     $sql= "SELECT * FROM products

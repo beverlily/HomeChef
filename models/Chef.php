@@ -50,7 +50,7 @@ class Chef {
 
 
   /*Method that allows to edit the chef info
-	Parameters: $userId - user_id of the chef 
+	Parameters: $userId - user_id of the chef
 							$bio - bio of the chef
               $image - image of the chef
               $radius - delivery radius */
@@ -75,9 +75,9 @@ class Chef {
   /*Method that allows to delete the chef profile  and all dependant data*/
 
 	public function deleteChef($id, $userId){
-		$sql = "DELETE FROM products 
+		$sql = "DELETE FROM products
             WHERE chef_id = :id";
-    
+
     $pst = $this->db->prepare($sql);
     $pst->bindParam(':id', $id);
     $pst->execute();
@@ -95,12 +95,12 @@ class Chef {
 		$pst->bindParam(':userId', $userId);
 		$pst->execute();
 
-		
-		
+
+
 		return $count;
   }
 
-	
+
 	/*Method that gets the chef info with the specific id.*/
 
  		public function getChef($id) {

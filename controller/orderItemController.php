@@ -19,8 +19,9 @@ if(isset($_POST['place_order'])){
 	//starts a new order (empties cart)
 	$orderId = $order->createOrder($user_id, $current_address);
 	if($orderId){
-		header('Location:user_profile');
 		$_SESSION['ORDERID']= $orderId;
+		header('Location:order_confirmation');
+		
 	}
 }
 
