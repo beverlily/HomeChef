@@ -55,8 +55,8 @@
 						<div class="testimonial-text">
 						   <img src="images/3.jpg" alt="A person jogging on a treadmill">
 						   <div class="featureImgText">
-							  <p>I loved my meal!
-							  So fresh and tasty!</p>
+							  <p>"I loved my meal!
+							  So fresh and tasty!"</p>
 						   </div>
 						</div>
 					 </div>
@@ -64,9 +64,9 @@
 						<div class="testimonial-text">
 						   <img src="images/1.jpg" alt="A person jogging on a treadmill">
 						   <div class="featureImgText">
-							  <p>Perfect for a busy
+							  <p>"Perfect for a busy
 							  night when you want
-						  	  something quick.</p>
+						  	  something quick."</p>
 						   </div>
 						</div>
 					 </div>
@@ -74,8 +74,8 @@
 						<div class="testimonial-text">
 						   <img src="images/2.jpg" alt="A person jogging on a treadmill">
 						   <div class="featureImgText">
-							  <p>Really cool way to
-							  meet people in the area!</p>
+							  <p>"Really cool way to
+							  meet people in the area!"</p>
 						   </div>
 						</div>
 					 </div>

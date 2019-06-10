@@ -32,6 +32,7 @@ body{
   padding: 0;
   color: #4daba4;
   background-color:#D3F2EF;
+  font-family: 'Lato', sans-serif;
 }
 h1,h2,h3,h4,h5,h6{
   font-family: 'Josefin Sans', sans-serif;
@@ -56,9 +57,7 @@ li{
   display: inline-block;
 }
 
-/* #main{
-  margin:10px;
-} */
+
 
 /*STEPS*/
 #steps{
@@ -320,7 +319,7 @@ input, textarea{
     padding: .5em;
 }
 
-form button, #user-profile button, #chef-pages button{
+.submit-button, form button, #user-profile button, #chef-pages button{
   background-color:#253546;
   color:white;
   text-align: center;
@@ -332,12 +331,51 @@ form button, #user-profile button, #chef-pages button{
     margin: 20px auto;
 }
 
-form button:hover, #user-profile button:hover, #chef-pages button:hover{
+.submit-order{
+  background-color:#253546;
+  color:white;
+  /* text-align: center; */
+  padding: 10px;
+    /* display: block; */
+    transition: all .5s;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 20px auto;
+}
+
+
+.submit-order:hover, .submit-button:hover, form button:hover, #user-profile button:hover, #chef-pages button:hover{
   background-color:#E1584B;
+  cursor: pointer;
 }
 
 button a{
   color:white;
+}
+
+#del-text{
+  width:32%;
+  height:30px;
+  margin-left:10px;
+}
+
+#comments-text{
+  width:50%;
+  height:75px;
+  margin-top: 10px;
+
+}
+
+#credit-card {
+  width:29%;
+  height:30px;
+  margin-left:10px;
+}
+#exp{
+  width:37%;
+  height:30px;
+  margin-left:10px;
+  margin-top:10px;
 }
 
 /*USER PROFILE PAGE*/
