@@ -8,6 +8,7 @@ class OrderItem
 		$this->db = Database::getDb();
 	}
 
+	//Adds order item to cart 
 	public function addOrderItem($order_id, $product_id, $quantity){
 		//checks to see if product is already in cart
 		$sql = 'SELECT *
@@ -79,6 +80,7 @@ class OrderItem
 	}
 
 
+//Updates order item quantity in cart
 	public function updateOrderItemQuantity($order_id, $product_id, $quantity){
 		$sql = 'UPDATE products_orders
 			SET quantity = :quantity
@@ -93,6 +95,7 @@ class OrderItem
 		return $pstmt->execute();
 	}
 
+	//Deletes order item from cart
 	public function deleteOrderItem($order_id, $product_id){
 		$sql = 'DELETE
 		FROM products_orders

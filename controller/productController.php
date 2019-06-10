@@ -73,8 +73,8 @@ if(isset($_POST["add-to-cart"])){
 	$product_id = $_POST['id'];
 	$order_id = $_SESSION['ORDERID'];
 	$quantity = $_POST['quantity'];
-	$count = $orderItem->addOrderItem($order_id, $product_id, $quantity);
-  if(!$count){
+	$addToCart = $orderItem->addOrderItem($order_id, $product_id, $quantity);
+  if(!$addToCart){
     $_SESSION['addCartErrorMessage'] = "Something went wrong";
   }
   else{

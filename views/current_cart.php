@@ -41,18 +41,18 @@
                 <li class="flex-container">
                    <img src="images/<?=$item->image?>" alt="<?=$item->title?>" class="order-item" />
                    <div>
-                      <h3 class='item-title'><?=$item->title?></h3>
+                      <h3 class="item-title"><?=$item->title?></h3>
                       <div>Quantity: <?=$item->quantity?></div>
                       <div>$<?=$price?></div>
                       <br />
-                      <div class='item-edit-delete'>
-                         <form method='POST' action='edit_cart_item'>
-                            <input type='hidden' name='product_id' value='<?=$item->id?>' />
-                            <input type='submit' name='edit_order_item' value='Edit Item'>
+                      <div class="item-edit-delete">
+                         <form method="POST" action="edit_cart_item">
+                            <input type="hidden" name="product_id" value="<?=$item->id?>"/>
+                            <input type="submit" name="edit_order_item" value="Edit Item">
                          </form>
-                         <form method='POST'>
-                            <input type='hidden' name='product_id' value='<?$item->id?>' />
-                            <input type='submit' name='delete_order_item' value='Remove From Cart'>
+                         <form method="POST">
+                            <input type="hidden" name="product_id" value="<?=$item->id?>" />
+                            <input type="submit" name="delete_order_item" value="Remove From Cart">
                          </form>
                       </div>
                    </div>
