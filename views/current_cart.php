@@ -48,11 +48,11 @@
                       <div class="item-edit-delete">
                          <form method="POST" action="edit_cart_item">
                             <input type="hidden" name="product_id" value="<?=$item->id?>"/>
-                            <input type="submit" name="edit_order_item" value="Edit Item">
+                            <input type="submit" class="submit-order" name="edit_order_item" value="Edit Item">
                          </form>
                          <form method="POST">
                             <input type="hidden" name="product_id" value="<?=$item->id?>" />
-                            <input type="submit" name="delete_order_item" value="Remove From Cart">
+                            <input type="submit"  class="submit-order" name="delete_order_item" value="Remove From Cart">
                          </form>
                       </div>
                    </div>
@@ -75,16 +75,27 @@
             <input type="hidden" name="total_price" value="<?=$totalPriceAfterTax?>" />
             <div>
               <label for id="address">Delivery Address:</label>
-              <input type="text" name="address" value="<?=$currentOrder->address?>"/>
+              <input type="text" name="address" id="del-text" value="<?=$currentOrder->address?>"/>
             </div>
             <br />
             <div>
               <label for id="comments">Comments:</label>
               <br />
-              <textarea name="comments"></textarea>
+              <textarea id="comments-text" name="comments"></textarea>
             </div>
             <br />
-            <input type='submit' name="place_order" value="Place Order"/>
+            <div>
+              <label for name="credit-card"> Credit Card Number: </label>
+              <input type="text" name="credit-card" id="credit-card"/>
+              <br />
+            </div>
+            <div >
+              <label for name="exp"> Expiry Date: </label>
+              <input type="text" id="exp" name="exp"/>
+              <br />
+
+            </div>
+            <input type='submit' class="submit-order" name="place_order" value="Place Order"/>
          </form>
       </div> <!-- end of cart-->
    </div> <!-- end of page wrapper-->

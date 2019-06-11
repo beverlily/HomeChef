@@ -38,7 +38,7 @@ if(isset($_SESSION['addCartErrorMessage'])){
 				<input id="quantity" type='number' name='quantity' min='1' value='1' />
 				<br />
 				<br />
-				<input type='submit' name='add-to-cart' value="Add to Cart"/>
+				<input class="submit-button" type='submit' name='add-to-cart' value="Add to Cart"/>
 			</form>
 		<?php endif; ?>
     <?php if($addCartErrorMessage!=""):?>
