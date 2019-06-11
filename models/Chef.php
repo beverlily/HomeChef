@@ -134,21 +134,21 @@ class Chef {
  	  }
 
 
-	  public function getChefId($user_id) {
-		  $sql = "SELECT chefs.id AS chefId
-		  FROM users
-		  INNER JOIN chefs
-		  ON users.id = chefs.user_id
-		  WHERE users.id = :user_id";
+	  // public function getChefId($user_id) {
+		//   $sql = "SELECT chefs.id AS chefId
+		//   FROM users
+		//   INNER JOIN chefs
+		//   ON users.id = chefs.user_id
+		//   WHERE users.id = :user_id";
 
-			$pst = $this->db->prepare($sql);
-			$pst->bindParam(':user_id', $user_id);
-			$pst->execute();
+		// 	$pst = $this->db->prepare($sql);
+		// 	$pst->bindParam(':user_id', $user_id);
+		// 	$pst->execute();
 
-			$chef = $pst->fetch();
+		// 	$chef = $pst->fetch();
 
-			return $chef;
-	   }
+		// 	return $chef;
+	  //  }
 }
 
 
